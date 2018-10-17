@@ -14,13 +14,36 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
     <title>Home</title>
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <!-- Bootstrap CSS CDN -->
-    <link rel="stylesheet" href="css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-    
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="./css/index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script>
+        $(document).ready(function(){
+           $("#province").change(function(){
+               id= $("#province").val();
+               $.ajax({
+                url: "js/xuly_provice.php",
+                type:"post",
+                data: "provinceid="+id,
+                async: true,
+                success: function (kq) {
+                    $("#district").html(kq);
+                }
+               });
+               return false;    
+           });
+        });
+    </script>
     <script type="text/javascript" src="./js/index.js"></script>
+    
 </head>
 
 <body>
@@ -57,7 +80,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
             </ul>
         </nav>
         <!-- Page Content Holder -->
-        <div id="content">
+        <div id="content" class="container">
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header">
@@ -201,51 +224,82 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                         </div>
                     </div>
                     <div id="menu1" class="tab-pane fade">
-                        <div class="card card-default col-md-9" style="margin: auto">
-                            <div class="card-body">
-                                <h2 style="text-align: center">Cập nhật thông tin cá nhân</h2>
-                                <form id="formsuadoi" method="POST">
-                                    <label>Họ và tên</label>
-                                    <input type="text" id="hovaten">
-                                    <br>
-                                    <label>Giới tính</label>
-                                    <input type="radio" name="gioitinh" value="1"> Nam
-                                    <input type="radio" name="gioitinh" value="0"> Nữ
-                                    <br>
-                                    <label>Ngày sinh</label>
-                                    <input type="date" id="ngaysinh">
-                                    <br>
-                                    <label>Nơi sinh</label>
-                                    <input type="text" id="noisinh">
-                                    <br>
-                                    <label>Mã số sinh viên</label>
-                                    <input type="text" id="masosinhvien">
-                                    <br>
-                                    <label>Lớp</label>
-                                    <input type="text" id="lop">
-                                    <br>
-                                    <label>Niên khóa</label>
-                                    <input type="text" id="nienkhoa1"> -
-                                    <input type="text" id="nienkhoa2">
-                                    <br>
-                                    <label>Số điện thoại</label>
-                                    <input type="tel" id="sodienthoai">
-                                    <br>
-                                    <label>Địa chỉ email</label>
-                                    <input type="email" id="sodienthoai">
-                                    <br>
-                                    <label>Nơi ở hiện tại</label>
-                                    <input type="text" id="noio">
-                                    <br>
-                                    <label>Công việc hiện tại</label>
-                                    <input type="text" id="congviec">
-                                    <br>
-                                    <label>Nơi đang công tác</label>
-                                    <input type="text" id="congty">
-                                    <br>
-                                    <label>&nbsp;</label>
-                                    <input type="button" value="Ghi nhận">
-                                    <input type="button" value="Bỏ qua">
+                        <div class="card card-default col-md-12" style="margin: auto">
+                            <div class="card-body container panel">
+                                <h2 style="text-align: center">Cập nhật thông tin cá nhân</h2><br/>
+                                <form class="form-horizontal" action="/action_page.php">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2" >Họ tên:</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" >
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2" >Ngày sinh:</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" >
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2">Mã số sinh viên:</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" >
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2">Nơi sinh:</label>
+                                        <div class="col-sm-10">
+                                            <select class="form-control col-sm-3 form-inline" id="province">
+                                                <option value="none">Tỉnh -Thành phố</option>
+                                                <?php
+                                                    require_once("../lib/connect.php");
+                                                    $result= mysqli_query($conn,"select provinceid,name,type from province");
+                                                    while ($data=mysqli_fetch_array($result)) {
+                                                       echo "<option value='$data[provinceid]'>$data[type] $data[name]</option>";
+                                                    }
+                                                    mysqli_close();
+                                                ?>
+                                            </select>
+                                            <select class="form-control col-sm-3 form-inline" id="district">
+                                                <option value="none">Quận - Huyện - Thị xã</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2">Khoá học:</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" >
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2">Lóp:</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" >
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2">Số điện thoại</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" >
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2">Email liên hệ:</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" >
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2">Ảnh</label>
+                                        <div class="col-sm-10">
+                                            <input type="file">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <button type="submit" class="btn btn-default">Submit</button>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -255,27 +309,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
         </div>
     </div>
     <!-- jQuery CDN - Slim version (=without AJAX) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <!-- Popper.JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-<!-- Bootstrap JS -->
-
-<!-- jQuery Custom Scroller CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script type="text/javascript">
-    $(document).ready(function() {
-        $("#sidebar").mCustomScrollbar({
-            theme: "minimal"
-        });
-        $('#sidebarCollapse').on('click', function() {
-            $('#sidebar, #content').toggleClass('active');
-            $('.collapse.in').toggleClass('in');
-            $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-        });
-    });
-    </script>
+    
 </body>
 
 </html>
