@@ -123,8 +123,8 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                 </ul>
                 <div class="tab-content">
                     <div id="home" class="tab-pane fade in active">
-                        <div id="searchResult" class="card col-md-9">
-                            <div class="card-body">
+                        <div id="searchResult" class="panel col-md-9">
+                            <div class="panel-body">
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
@@ -211,9 +211,9 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                                 </table>
                             </div>
                         </div>
-                        <div id="summary" class="card col-md-3">
-                            <img class="card-img-top img-responsive img-circle" src="./images/avatar.png" alt="Card image cap">
-                            <div class="card-body">
+                        <div id="summary" class="panel col-md-3">
+                            <img class="panel-img-top img-responsive img-circle" src="./images/avatar.png" alt="panel image cap" style="margin: auto">
+                            <div class="panel-body">
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item" id="hoten"><b>Họ và tên:</b> Trần Hưng Nhật</li>
                                     <li class="list-group-item" id="ngaysinh"><b>Ngày sinh:</b> 30/04/1975</li>
@@ -224,8 +224,8 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                         </div>
                     </div>
                     <div id="menu1" class="tab-pane fade">
-                        <div class="card card-default col-md-12" style="margin: auto">
-                            <div class="card-body container panel">
+                        <div class="panel panel-default" style="margin: auto">
+                            <div class="panel-body panel">
                                 <h2 style="text-align: center">Cập nhật thông tin cá nhân</h2><br/>
                                 <form class="form-horizontal" action="/action_page.php">
                                     <div class="form-group">

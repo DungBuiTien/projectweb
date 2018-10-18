@@ -104,7 +104,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                         </ol>
                         <div class="carousel-inner" role="listbox">
                           <div class="item active">
-                            <img class="d-block w-100" src="./images/slide.png" alt="First slide">
+                            <img class="d-block w-100" src="./images/nhat.jpg" alt="First slide">
                             <div class="carousel-caption d-none">
                                 <h5>Trần Hưng Nhật</h5>
                                 <p>Tấm gương vượt giàu thất nghiệp.</p>
@@ -135,23 +135,160 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                         </a>
                       </div>
         </div>
-
-                <div class="line"></div>
-
-                <h2>Lorem Ipsum Dolor</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-                <div class="line"></div>
-
-                <h2>Lorem Ipsum Dolor</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-                <div class="line"></div>
-
-                <h3>Lorem Ipsum Dolor</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
+        <div class="line"></div>
+        <div id="lastestUpdate">
+            <div class="col col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Cựu sinh viên mới nhất</div>
+                    <div class="panel-body">
+                        <table class="table table-striped">
+                            <thead>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>16021234</td>
+                                    <td>Trần Hưng Nhật</td>
+                                </tr>
+                                <tr>
+                                    <td>16021234</td>
+                                    <td>Trần Hưng Nhật</td>
+                                </tr>                  
+                                <tr>
+                                    <td>16021234</td>
+                                    <td>Trần Hưng Nhật</td>
+                                </tr>
+                                <tr>
+                                    <td>16021234</td>
+                                    <td>Trần Hưng Nhật</td>
+                                </tr>
+                                <tr>
+                                    <td>16021234</td>
+                                    <td>Trần Hưng Nhật</td>
+                                </tr>
+                                <tr>
+                                    <td>16021234</td>
+                                    <td>Trần Hưng Nhật</td>
+                                </tr>
+                                <tr>
+                                    <td>16021234</td>
+                                    <td>Trần Hưng Nhật</td>
+                                </tr>
+                                <tr>
+                                    <td>16021234</td>
+                                    <td>Trần Hưng Nhật</td>
+                                </tr>
+                                <tr>
+                                    <td>16021234</td>
+                                    <td>Trần Hưng Nhật</td>
+                                </tr>
+                                <tr>
+                                    <td>16021234</td>
+                                    <td>Trần Hưng Nhật</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div> 
+            <div class="col col-md-5">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Lớp mới được cập nhật</div>
+                    <div class="panel-body">
+                        <table class="table table-striped">
+                            <thead>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>CMT8-1945</td>
+                                    <td>Công nghệ thông tin</td>
+                                </tr>
+                                <tr>
+                                    <td>CMT8-1945</td>
+                                    <td>Công nghệ thông tin</td>
+                                </tr>
+                                <tr>
+                                    <td>CMT8-1945</td>
+                                    <td>Công nghệ thông tin</td>
+                                </tr>
+                                <tr>
+                                    <td>CMT8-1945</td>
+                                    <td>Công nghệ thông tin</td>
+                                </tr>
+                                <tr>
+                                    <td>CMT8-1945</td>
+                                    <td>Công nghệ thông tin</td>
+                                </tr>
+                                <tr>
+                                    <td>CMT8-1945</td>
+                                    <td>Công nghệ thông tin</td>
+                                </tr>
+                                <tr>
+                                    <td>CMT8-1945</td>
+                                    <td>Công nghệ thông tin</td>
+                                </tr>
+                                <tr>
+                                    <td>CMT8-1945</td>
+                                    <td>Công nghệ thông tin</td>
+                                </tr>
+                                <tr>
+                                    <td>CMT8-1945</td>
+                                    <td>Công nghệ thông tin</td>
+                                </tr>
+                                <tr>
+                                    <td>CMT8-1945</td>
+                                    <td>Công nghệ thông tin</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div> 
+            <div class="col col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Khóa mới được cập nhật</div>
+                    <div class="panel-body">
+                        <table class="table table-striped">
+                            <thead>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2006-2010</td>
+                                </tr>
+                                <tr>
+                                    <td>2006-2010</td>
+                                </tr>
+                                <tr>
+                                    <td>2006-2010</td>
+                                </tr>
+                                <tr>
+                                    <td>2006-2010</td>
+                                </tr>
+                                <tr>
+                                    <td>2006-2010</td>
+                                </tr>
+                                <tr>
+                                    <td>2006-2010</td>
+                                </tr>
+                                <tr>
+                                    <td>2006-2010</td>
+                                </tr>
+                                <tr>
+                                    <td>2006-2010</td>
+                                </tr>
+                                <tr>
+                                    <td>2006-2010</td>
+                                </tr>
+                                <tr>
+                                    <td>2006-2010</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div> 
         </div>
+        </div>
+    </div>
 
         <!-- jQuery CDN -->
          <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
