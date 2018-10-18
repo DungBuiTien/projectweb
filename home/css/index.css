@@ -83,7 +83,7 @@ a, a:hover, a:focus {
     display: block;
     height: auto;
 }
-#sidebar ul li a:hover,a:focus {
+#sidebar ul li a:hover, #sidebar ul li a:focus {
     color: #fff;
     background: #3c3b54;
     border-left: 5px solid #817fc3;
@@ -145,13 +145,9 @@ ul ul a {
 .fa{
     padding-right: 15px;
 }
-.card-header{
-    margin-bottom: 20px;
-}
-.card-img-top{
-    
-    margin: 0px auto;
-    margin-bottom: 20px;
+.panel-heading{
+    text-align: center;
+    font-weight: bold;
 }
 .form-control{
     width: 75%;

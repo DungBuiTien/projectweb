@@ -118,8 +118,8 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
             <!-- Page content -->
             <h2 id="tenlop" style="text-align:center"> Danh sách sinh viên lớp CMT8-1945 </h2>
             <br>
-            <div id="info" class="card col-md-offset-2 col-md-8">
-                            <div class="card-body">
+            <div id="info" class="panel col-md-offset-2 col-md-8">
+                            <div class="panel-body">
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
