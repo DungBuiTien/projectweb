@@ -22,12 +22,8 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <!-- Our Custom CSS -->
         <link rel="stylesheet" href="./css/index.css">
-        <script type="text/javascript" src="./js/index.js"></script>
     </head>
     <body>
-
-
-
         <div class="wrapper">
             <!-- Sidebar Holder -->
             <nav id="sidebar">
@@ -96,10 +92,49 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                         </div>
                     </div>
                 </nav>
+            <!-- Content here -->
 
-                <h2>Collapsible Sidebar Using Bootstrap 3</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <div id="slidetieubieu">
+            <h2 style="text-align: center"><b>GƯƠNG MẶT TIÊU BIỂU</b></h2>
+                <div id="slide1" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                          <li data-target="#slide1" data-slide-to="0" class="active"></li>
+                          <li data-target="#slide1" data-slide-to="1"></li>
+                          <li data-target="#slide1" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner" role="listbox">
+                          <div class="item active">
+                            <img class="d-block w-100" src="./images/slide.png" alt="First slide">
+                            <div class="carousel-caption d-none">
+                                <h5>Trần Hưng Nhật</h5>
+                                <p>Tấm gương vượt giàu thất nghiệp.</p>
+                            </div>
+                            </div>
+                          <div class="item">
+                            <img class="d-block w-100" src="./images/slide.png" alt="Second slide">
+                            <div class="carousel-caption d-none">
+                                <h5>Đỗ Thành Huy</h5>
+                                <p>Bet thủ đầu tiên thống lĩnh được khu vực gầm cầu Đuống.</p>
+                            </div>
+                          </div>
+                          <div class="item">
+                            <img class="d-block w-100" src="./images/slide.png" alt="Third slide">
+                            <div class="carousel-caption d-none">
+                                    <h5>Bùi Tiến Dũng</h5>
+                                    <p>Fanboy Navi đầu tiên được đưa ra khỏi hang.</p>
+                                </div>
+                          </div>
+                        </div>
+                        <a class="left carousel-control" href="#slide1" role="button" data-slide="prev">
+                          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#slide1" role="button" data-slide="next">
+                          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                          <span class="sr-only">Next</span>
+                        </a>
+                      </div>
+        </div>
 
                 <div class="line"></div>
 
