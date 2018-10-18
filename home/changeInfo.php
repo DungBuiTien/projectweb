@@ -123,7 +123,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                 </ul>
                 <div class="tab-content">
                     <div id="home" class="tab-pane fade in active">
-                        <div id="info" class="card col-md-9">
+                        <div id="searchResult" class="card col-md-9">
                             <div class="card-body">
                                 <table class="table table-striped">
                                     <thead>
@@ -169,7 +169,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                                             <th scope="row">6</th>
                                             <td><b>Lớp</b></td>
                                             <td>CMT8-1975</td>
-                                            <td><i class="fas fa-search"></i> Tìm theo lớp</td>
+                                            <td><a href ="searchByClass.php"><i class="fas fa-search"></i> Tìm theo lớp</a></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">7</th>
@@ -187,7 +187,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                                             <th scope="row">9</th>
                                             <td><b>Địa chỉ email</b></td>
                                             <td>nhatbeo@gmail.com</td>
-                                            <td><i class="fas fa-search"></i> Tìm theo nơi sinh</td>
+                                            <td></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">10</th>
@@ -309,7 +309,13 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
         </div>
     </div>
     <!-- jQuery CDN - Slim version (=without AJAX) -->
-    
+    <script type="text/javascript">
+             $(document).ready(function () {
+                 $('#sidebarCollapse').on('click', function () {
+                     $('#sidebar').toggleClass('active');
+                 });
+             });
+         </script>
 </body>
 
 </html>

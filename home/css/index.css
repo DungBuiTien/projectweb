@@ -5,12 +5,12 @@
 
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'adobe-clean', sans-serif;
     background: #fafafa;
 }
 
 p {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'adobe-clean', sans-serif;
     font-size: 1.1em;
     font-weight: 300;
     line-height: 1.7em;
@@ -71,9 +71,6 @@ a, a:hover, a:focus {
     background: #3f3e58;
 }
 
-#sidebar ul.components {
-    border-bottom: 1px solid #47748b;
-}
 
 #sidebar ul p {
     color: #fff;
@@ -161,4 +158,14 @@ ul ul a {
 }
 select.col-sm-3 {
     width: 37.5%;
+}
+/* Carousel */
+.carousel{
+    max-height: 400;
+} 
+
+.carousel .item img{
+    max-height: 400px;
+    margin-left: auto;
+    margin-right: auto;
 }
