@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!$_SESSION['username'] || $_SESSION['username']==NULL){
-     header('Localtion : ../admin/login.php');
+ header('Localtion : ../admin/login.php');
 }
 ?>
 <!DOCTYPE html>
@@ -37,13 +37,13 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                 success: function (kq) {
                     $("#district").html(kq);
                 }
-               });
+            });
                return false;    
            });
-        });
-    </script>
-    <script type="text/javascript" src="./js/index.js"></script>
-    
+       });
+   </script>
+   <script type="text/javascript" src="./js/index.js"></script>
+   
 </head>
 
 <body>
@@ -99,149 +99,149 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                             <li>
                                 <button class="btn btn-default" data-toggle="dropdown">
                                     <?php
-                                            if($_SESSION['username']== "admin" || $_SESSION['username']=="tieuconghoa193@gmail.com"){
-                                                $_SESSION['username']="admin";
-                                                echo '<i class="fa fa-user-shield"> '.$_SESSION['username'].'</i>';
-                                            }
-                                            else  echo '<i class="fa fa-user"> '.$_SESSION['username'].'</i>';
-                                         ?>
+                                    if($_SESSION['username']== "admin" || $_SESSION['username']=="tieuconghoa193@gmail.com"){
+                                        $_SESSION['username']="admin";
+                                        echo '<i class="fa fa-user-shield"> '.$_SESSION['username'].'</i>';
+                                    }
+                                    else  echo '<i class="fa fa-user"> '.$_SESSION['username'].'</i>';
+                                    ?>
                                     <span class="caret"></span></button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Cập nhật thông tin</a></li>
-                                    <li><a href="../admin/logout.php">Logout</a></li>
-                                </ul>
-                            </li>
-                        </ul>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Cập nhật thông tin</a></li>
+                                        <li><a href="../admin/logout.php">Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <!-- Page content -->
+                <h2 id="tenlop" style="text-align:center"> Danh sách sinh viên lớp CMT8-1945 </h2>
+                <br>
+                <div id="info" class="panel col-md-offset-2 col-md-8">
+                    <div class="panel-body">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">Mã số sinh viên</th>
+                                    <th scope="col">Họ và tên</th>
+                                    <th scope="col">Ngày sinh</th>
+                                    <th scope="col">Chú thích</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td><b>16021234</b></td>
+                                    <td>Trần Hưng Nhật</td>
+                                    <td>30/04/1975</td>
+                                    <td>Lớp trưởng</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td><b>16021234</b></td>
+                                    <td>Trần Hưng Nhật</td>
+                                    <td>30/04/1975</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td><b>16021234</b></td>
+                                    <td>Trần Hưng Nhật</td>
+                                    <td>30/04/1975</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">4</th>
+                                    <td><b>16021234</b></td>
+                                    <td>Trần Hưng Nhật</td>
+                                    <td>30/04/1975</td>
+                                    <td>Bí thư</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">5</th>
+                                    <td><b>16021234</b></td>
+                                    <td>Trần Hưng Nhật</td>
+                                    <td>30/04/1975</td>
+                                    <td>Lớp phó</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">6</th>
+                                    <td><b>16021234</b></td>
+                                    <td>Trần Hưng Nhật</td>
+                                    <td>30/04/1975</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">7</th>
+                                    <td><b>16021234</b></td>
+                                    <td>Trần Hưng Nhật</td>
+                                    <td>30/04/1975</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">8</th>
+                                    <td><b>16021234</b></td>
+                                    <td>Trần Hưng Nhật</td>
+                                    <td>30/04/1975</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">9</th>
+                                    <td><b>16021234</b></td>
+                                    <td>Trần Hưng Nhật</td>
+                                    <td>30/04/1975</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">10</th>
+                                    <td><b>16021234</b></td>
+                                    <td>Trần Hưng Nhật</td>
+                                    <td>30/04/1975</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">11</th>
+                                    <td><b>16021234</b></td>
+                                    <td>Trần Hưng Nhật</td>
+                                    <td>30/04/1975</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">12</th>
+                                    <td><b>16021234</b></td>
+                                    <td>Trần Hưng Nhật</td>
+                                    <td>30/04/1975</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">13</th>
+                                    <td><b>16021234</b></td>
+                                    <td>Trần Hưng Nhật</td>
+                                    <td>30/04/1975</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">14</th>
+                                    <td><b>16021234</b></td>
+                                    <td>Trần Hưng Nhật</td>
+                                    <td>30/04/1975</td>
+                                    <td></td>
+                                </tr>
+
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-            </nav>
-            <!-- Page content -->
-            <h2 id="tenlop" style="text-align:center"> Danh sách sinh viên lớp CMT8-1945 </h2>
-            <br>
-            <div id="info" class="panel col-md-offset-2 col-md-8">
-                            <div class="panel-body">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col"></th>
-                                            <th scope="col">Mã số sinh viên</th>
-                                            <th scope="col">Họ và tên</th>
-                                            <th scope="col">Ngày sinh</th>
-                                            <th scope="col">Chú thích</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td><b>16021234</b></td>
-                                            <td>Trần Hưng Nhật</td>
-                                            <td>30/04/1975</td>
-                                            <td>Lớp trưởng</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td><b>16021234</b></td>
-                                            <td>Trần Hưng Nhật</td>
-                                            <td>30/04/1975</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td><b>16021234</b></td>
-                                            <td>Trần Hưng Nhật</td>
-                                            <td>30/04/1975</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">4</th>
-                                            <td><b>16021234</b></td>
-                                            <td>Trần Hưng Nhật</td>
-                                            <td>30/04/1975</td>
-                                            <td>Bí thư</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">5</th>
-                                            <td><b>16021234</b></td>
-                                            <td>Trần Hưng Nhật</td>
-                                            <td>30/04/1975</td>
-                                            <td>Lớp phó</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">6</th>
-                                            <td><b>16021234</b></td>
-                                            <td>Trần Hưng Nhật</td>
-                                            <td>30/04/1975</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">7</th>
-                                            <td><b>16021234</b></td>
-                                            <td>Trần Hưng Nhật</td>
-                                            <td>30/04/1975</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">8</th>
-                                            <td><b>16021234</b></td>
-                                            <td>Trần Hưng Nhật</td>
-                                            <td>30/04/1975</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">9</th>
-                                            <td><b>16021234</b></td>
-                                            <td>Trần Hưng Nhật</td>
-                                            <td>30/04/1975</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">10</th>
-                                            <td><b>16021234</b></td>
-                                            <td>Trần Hưng Nhật</td>
-                                            <td>30/04/1975</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">11</th>
-                                            <td><b>16021234</b></td>
-                                            <td>Trần Hưng Nhật</td>
-                                            <td>30/04/1975</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">12</th>
-                                            <td><b>16021234</b></td>
-                                            <td>Trần Hưng Nhật</td>
-                                            <td>30/04/1975</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">13</th>
-                                            <td><b>16021234</b></td>
-                                            <td>Trần Hưng Nhật</td>
-                                            <td>30/04/1975</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">14</th>
-                                            <td><b>16021234</b></td>
-                                            <td>Trần Hưng Nhật</td>
-                                            <td>30/04/1975</td>
-                                            <td></td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-        </div>
-    </div>
-    <!-- jQuery CDN - Slim version (=without AJAX) -->
-    <script type="text/javascript">
-             $(document).ready(function () {
-                 $('#sidebarCollapse').on('click', function () {
-                     $('#sidebar').toggleClass('active');
+                <!-- jQuery CDN - Slim version (=without AJAX) -->
+                <script type="text/javascript">
+                 $(document).ready(function () {
+                     $('#sidebarCollapse').on('click', function () {
+                         $('#sidebar').toggleClass('active');
+                     });
                  });
-             });
-         </script>
-</body>
+             </script>
+         </body>
 
-</html>
+         </html>
