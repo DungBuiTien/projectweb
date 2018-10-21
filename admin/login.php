@@ -35,6 +35,7 @@
     </div>
 </body>
  <?php
+    
     //Gọi file connection.php 
     require_once("../lib/connect.php");
     $error="";

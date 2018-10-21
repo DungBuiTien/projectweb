@@ -25,23 +25,6 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
     <!-- Bootstrap JS -->
     <!-- jQuery Custom Scroller CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script>
-        $(document).ready(function(){
-           $("#province").change(function(){
-               id= $("#province").val();
-               $.ajax({
-                url: "js/xuly_provice.php",
-                type:"post",
-                data: "provinceid="+id,
-                async: true,
-                success: function (kq) {
-                    $("#district").html(kq);
-                }
-               });
-               return false;    
-           });
-        });
-    </script>
     <script type="text/javascript" src="./js/index.js"></script>
     
 </head>
@@ -51,7 +34,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
         <!-- Sidebar Holder -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>Trang quản lý cựu sinh viên</h3>
+                <h3><a href="./">Trang quản lý cựu sinh viên</a></h3>
             </div>
             <ul class="list-unstyled components">
                 <li class="active">
@@ -107,7 +90,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                                          ?>
                                     <span class="caret"></span></button>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Cập nhật thông tin</a></li>
+                                    <li><a href="changeInfo.php">Cập nhật thông tin</a></li>
                                     <li><a href="../admin/logout.php">Logout</a></li>
                                 </ul>
                             </li>
