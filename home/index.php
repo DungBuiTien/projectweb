@@ -36,15 +36,15 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                     <a href=""><i class="fa fa-home fa-lg"></i> Tin tức cựu sinh viên</a>
                 </li>
                 <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"><i class="fa fa-file fa-lg"></i> Báo cáo về cựu sinh viên</a>
-                    <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li><a href="#">Báo cáo 1</a></li>
-                        <li><a href="#">Báo cáo 2</a></li>
-                        <li><a href="#">Báo cáo 3</a></li>
-                    </ul>
+                    <a href=""><i class="fa fa-sliders-h fa-lg"></i> Tìm kiếm</a>
                 </li>
                 <li>
-                    <a href=""><i class="fa fa-sliders-h fa-lg"></i> Dashboard</a>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"><i class="fa fa-file fa-lg"></i> Báo cáo về cựu sinh viên</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li><a href="#">Báo cáo theo niên khóa</a></li>
+                        <li><a href="#">Báo cáo theo lớp học</a></li>
+                        <li><a href="#">Báo cáo chung</a></li>
+                    </ul>
                 </li>
                 <li>
                     <a href=""><i class="fa fa-chart-bar fa-lg"></i> Thống kê</a>
