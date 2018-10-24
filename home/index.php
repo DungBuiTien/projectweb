@@ -36,12 +36,12 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                     <a href=""><i class="fa fa-home fa-lg"></i> Tin tức cựu sinh viên</a>
                 </li>
                 <li>
-                    <a href=""><i class="fa fa-sliders-h fa-lg"></i> Tìm kiếm</a>
+                    <a href=""><i class="fa fa-search"></i> Tìm kiếm</a>
                 </li>
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"><i class="fa fa-file fa-lg"></i> Báo cáo về cựu sinh viên</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li><a href="#">Báo cáo theo niên khóa</a></li>
+                        <li><a href="reportByYear.php">Báo cáo theo niên khóa</a></li>
                         <li><a href="#">Báo cáo theo lớp học</a></li>
                         <li><a href="#">Báo cáo chung</a></li>
                     </ul>

@@ -11,7 +11,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Home</title>
+    <title>Thông tin cá nhân</title>
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -42,7 +42,6 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
          });
      });
  </script>
- <script type="text/javascript" src="./js/index.js"></script>
  
 </head>
 
@@ -55,18 +54,18 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
             </div>
             <ul class="list-unstyled components">
                 <li class="active">
-                    <a href="#"><i class="fa fa-home fa-lg"></i> Tin tức cựu sinh viên</a>
+                    <a href="index.php"><i class="fa fa-home fa-lg"></i> Tin tức cựu sinh viên</a>
+                <li>
+                    <a href=""><i class="fa fa-search"></i> Tìm kiếm</a>
+                </li>
                 </li>
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"><i class="fa fa-file fa-lg"></i> Báo cáo về cựu sinh viên</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li><a href="#">Báo cáo 1</a></li>
-                        <li><a href="#">Báo cáo 2</a></li>
-                        <li><a href="#">Báo cáo 3</a></li>
+                        <li><a href="reportByYear.php">Báo cáo theo niên khóa</a></li>
+                        <li><a href="#">Báo cáo theo lớp học</a></li>
+                        <li><a href="#">Báo cáo chung</a></li>
                     </ul>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-sliders-h fa-lg"></i> Dashboard</a>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-chart-bar fa-lg"></i> Thống kê</a>
@@ -107,7 +106,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                                     ?>
                                     <span class="caret"></span></button>
                                     <ul class="dropdown-menu">
-                                        <li><a href="#">Cập nhật thông tin</a></li>
+                                        <li><a href="changeInfo.php">Cập nhật thông tin</a></li>
                                         <li><a href="../admin/logout.php">Logout</a></li>
                                     </ul>
                                 </li>
