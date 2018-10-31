@@ -25,7 +25,9 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
     <!-- Bootstrap JS -->
     <!-- jQuery Custom Scroller CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-   
+
+    <script type="text/javascript" src="./js/index.js"></script>
+
 </head>
 
 <body>
@@ -33,7 +35,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
         <!-- Sidebar Holder -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>Trang quản lý cựu sinh viên</h3>
+                <h3><a href="./">Trang quản lý cựu sinh viên</a></h3>
             </div>
             <ul class="list-unstyled components">
                 <li class="active">
@@ -95,6 +97,12 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                                 </li>
                             </ul>
                         </div>
+                                <ul class="dropdown-menu">
+                                    <li><a href="changeInfo.php">Cập nhật thông tin</a></li>
+                                    <li><a href="../admin/logout.php">Logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
                 </nav>
                 <!-- Page content -->
