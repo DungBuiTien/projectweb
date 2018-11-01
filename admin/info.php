@@ -23,32 +23,48 @@ if(isset($_POST['update']) && isset($_SESSION['username']) ){
 	$target= "../home/images/". basename($_FILES['image']['name']);
 	$image = $_FILES['image']['name'];
 
+	function getExtension($str) {
+		$i = strrpos($str,".");
+		if (!$i) { return ""; }
+		$l = strlen($str) - $i;
+		$ext = substr($str,$i+1,$l);
+		return $ext;
+	}
+
 	if($gender==0) $gender="Nam";
 	elseif($gender==1) $gender="Nữ";
 	else $gender="Khác";
 	
 	if ($province == 'none' || $district=='none') {
-		echo "Vui long nhập tỉnh thành và huyện";
+		echo "Vui lòng nhập tỉnh thành và huyện";
+	}
+	$extension = getExtension($image);
+	$extension = strtolower($extension);
+	// Nếu nó không phải là file hình thì sẽ thông báo lỗi
+	if (($extension != "jpg") && ($extension != "jpeg") && ($extension !="png") && ($extension != "gif"))
+	{
+	// xuất lỗi ra màn hình
+		echo "<script>alert('Vui lòng nhập file hình ảnh!!')</script>";
+	}
+	else {
+		require_once("../lib/connect.php");
+
+		$sql= "INSERT INTO cuusv
+				VALUES(
+				'{$mssv}','{$fullname}','{$birthday}','{$gender}','{$lopkhoahoc}','{$khoahoc}','{$phone_number}','{$email}','{$province}','{$district}','$image','{$_SESSION['username']}') 
+				ON DUPLICATE KEY UPDATE mssv='{$mssv}',gender='{$gender}',phone_number='{$phone_number}',email='{$email}',image='{$image}',username='{$_SESSION['username']}'";
+		
+		@$addinfo = mysqli_query($conn,$sql);
+		move_uploaded_file($_FILES['image']['tmp_name'],$target);
+
+		
+		if(!$addinfo){
+			echo "<script>alert('Có lỗi xảy ra')</script>";
+		} else {
+			$_SESSION['addinfo'] = $addinfo;
+			header("Location: ../home/changeInfo.php");
+		}
 	}
 
-	require_once("../lib/connect.php");
-
-	$sql= "INSERT INTO cuusv
-			VALUES(
-			'{$mssv}','{$fullname}','{$birthday}','{$gender}','{$lopkhoahoc}','{$khoahoc}','{$phone_number}','{$email}','{$province}','{$district}','$image','{$_SESSION['username']}') 
-			ON DUPLICATE KEY UPDATE mssv='{$mssv}',gender='{$gender}',phone_number='{$phone_number}',email='{$email}',image='{$image}',username='{$_SESSION['username']}'";
-	
-	@$addinfo = mysqli_query($conn,$sql);
-	move_uploaded_file($_FILES['image']['tmp_name'],$target);
-
-	
-	if(!$addinfo){
-		echo "<script>alert('Có lỗi xảy ra')</script>";
-	} else {
-		$_SESSION['addinfo'] = $addinfo;
-		header("Location: ../home/changeInfo.php");
-	}
 }
-
-
 ?>	

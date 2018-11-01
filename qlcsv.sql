@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 21, 2018 lúc 05:22 PM
+-- Thời gian đã tạo: Th10 01, 2018 lúc 07:37 AM
 -- Phiên bản máy phục vụ: 10.1.36-MariaDB
 -- Phiên bản PHP: 7.2.10
 
@@ -30,16 +30,16 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `cuusv` (
   `mssv` int(8) NOT NULL,
-  `fullname` varchar(60) NOT NULL,
+  `fullname` varchar(60) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
   `birthday` date NOT NULL,
   `gender` varchar(5) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
   `lopkhoahoc` varchar(50) NOT NULL,
   `khoahoc` varchar(50) NOT NULL,
-  `phone_number` int(10) NOT NULL,
+  `phone_number` varchar(10) NOT NULL,
   `email` varchar(50) NOT NULL,
   `provinceid` varchar(5) NOT NULL,
   `districtid` varchar(5) NOT NULL,
-  `image` varchar(2000) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
+  `image` varchar(2000) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci DEFAULT NULL,
   `username` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -48,8 +48,120 @@ CREATE TABLE `cuusv` (
 --
 
 INSERT INTO `cuusv` (`mssv`, `fullname`, `birthday`, `gender`, `lopkhoahoc`, `khoahoc`, `phone_number`, `email`, `provinceid`, `districtid`, `image`, `username`) VALUES
-(16021289, 'Hoà Tiêu', '1289-02-16', 'Nam', 'T', '2016', 1694728855, 'tieuconghoa193@gmail.com', '01', '001', '1.PNG', 'admin'),
-(16021290, 'Hoà Tiêu', '1998-02-19', 'Nữ', 'T', '2016', 1694728855, 'tieuconghoa193@gmail.com', '02', '024', 'sesshomaru.jpg', 'hoatieu');
+(16020059, 'Nguyễn Huy Tuyển', '1998-09-08', 'Nam', 'CAC', '2016', '0981.876.4', '16020059@vnu.edu.vn', '01', '001', '1.png', 'person'),
+(16020281, 'Trần Xuân Thành', '1998-01-21', 'Nam', 'CAC', '2016', '0981.689.1', '16020281@vnu.edu.vn', '01', '001', '1.png', 'person'),
+(16021126, 'Hà Phi Sơn', '1998-04-30', 'Nam', 'T', '2016', '1693721696', 'haphison3041998@gmail.com', '01', '001', '63', '153'),
+(16021252, 'Nguyễn Tuấn Anh', '1998-11-14', 'Nam', 'T', '2016', '1684420693', 'tuananh14111998@gmail.com', '01', '001', '3', '295'),
+(16021254, 'Tạ Hoàng Anh', '1998-10-25', 'Nam', 'T', '2016', '902289720', 'hoanganh251098@gmail.com', '01', '001', '4', '52'),
+(16021259, 'Lê Thành Công', '1997-12-18', 'Nam', 'T', '2016', '975673287', 'conglt@ows.com.vn', '01', '001', '6', '473'),
+(16021260, 'Nguyễn Đức Công', '1998-11-25', 'Nam', 'T', '2016', '1644322228', 'ndc251198@gmail.com', '01', '001', '7', '116'),
+(16021262, 'Bùi Ngọc Đăng', '1997-01-06', 'Nam', 'T', '2016', '1627203040', 'buidanglvt@gmail.com', '01', '001', '21', '33'),
+(16021270, 'Lê Thuận Đức', '1997-04-02', 'Nam', 'T', '2016', '975224497', 'Thuanduc.97@gmail.com', '01', '001', '22', '380'),
+(16021272, 'Bùi Tiến Dũng', '1998-06-29', 'Nam', 'T', '2016', '1644191799', 'lexus.liperty@gmail.com', '01', '001', '11', '252'),
+(16021273, 'Phạm Tuấn Dũng', '1998-01-31', 'Nam', 'T', '2016', '1254205321', 'nurmengard.no1@gmail', '01', '001', '12', '175'),
+(16021274, 'Lê Văn Duy', '1998-05-04', 'Nam', 'T', '2016', '888688024', 'leduh040598@gmail.com', '01', '001', '13', '417'),
+(16021275, 'Nguyễn Đắc Duy', '1998-11-17', 'Nam', 'T', '2016', '1648550999', 'hikariyoru.kun@gmail.com', '01', '001', '14', '84'),
+(16021276, 'Nguyễn Khánh Duy', '1998-12-07', 'Nam', 'T', '2016', '969346468', 'kuribohzz98@gmail.com', '01', '001', '15', '436'),
+(16021278, 'Nguyễn Quang Hà', '1998-07-06', 'Nam', 'T', '2016', '966694176', 'loveparadise98@gmail.com', '01', '001', '24', '141'),
+(16021280, 'Nguyễn Thu Hiền', '1998-11-28', 'Nữ', 'T', '2016', '971824938', 'duoinhungconmua1998@gmail.com', '01', '001', '28', '442'),
+(16021288, 'Dương Thanh Hòa', '1998-09-27', 'Nam', 'T', '2016', '1652086229', 'tahado98@gmail.com', '01', '001', '32', '289'),
+(16021289, 'Tiêu Công Hoà', '1998-03-19', 'Nam', 'T', '2016', '1694728855', 'tieuconghoa193@gmail.com', '01', '005', 'anh-girl-xinh-9-1.jpg', 'admin'),
+(16021292, 'Nguyễn Thị Hợp', '1998-04-01', 'Nữ', 'T', '2016', '1649595111', 'nguyenhop0104@gmail.com', '01', '001', '34', '484'),
+(16021297, 'Nguyễn Thị Hường', '1998-01-01', 'Nữ', 'T', '2016', '1646350808', 'nguyenhuong1998hy@gmail.com', '01', '001', '40', '99'),
+(16021299, 'Vũ Thanh Huyền', '1998-07-26', 'Nữ', 'T', '2016', '1684582555', 'hinbanh98@gmail.com', '01', '001', '38', '164'),
+(16021303, 'Nguyễn Bá Khiêm', '1998-11-14', 'Nam', 'T', '2016', '944841287', 'nhoaidoyeuem@gmail.com', '01', '001', '41', '464'),
+(16021307, 'Nguyễn Văn Long', '1998-04-09', 'Nam', 'T', '2016', '868832094', 'vnlonguet@gmail.com', '01', '001', '45', '55'),
+(16021309, 'Mai Thị Lý', '1998-06-12', 'Nữ', 'T', '2016', '1696568641', 'maily120698@gmail.com', '01', '001', '46', '441'),
+(16021311, 'Nguyễn Đức Minh', '1998-10-24', 'Nam', 'T', '2016', '1699493112', 'nguyenducminh24101998@gmail.com', '01', '001', '48', '136'),
+(16021312, 'Nguyễn Thanh Minh', '1998-11-27', 'Nam', 'T', '2016', '1664256378', 'minh656644@gmail.com', '01', '001', '49', '355'),
+(16021313, 'Nguyễn Tuấn Minh', '1998-06-01', 'Nam', 'T', '2016', '1654620099', 'nguyenmin580@gmail.com', '01', '001', '50', '65'),
+(16021314, 'Phan Thế Minh', '1997-04-23', 'Nam', 'T', '2016', '1278309685', 'phanminh.zet@gmail.com', '01', '001', '51', '480'),
+(16021323, 'Trần Hưng Nhật', '1998-12-23', 'Nam', 'T', '2016', '981804105', 'maonhattinhquan2312@gmail.com', '01', '001', '54', '118'),
+(16021324, 'Nguyễn Thị Hồng Nhung', '1997-08-29', 'Nữ', 'T', '2016', '1686501666', 'nhung290897@gmail.com', '01', '001', '55', '469'),
+(16021325, 'Lê Quý Phong', '1998-07-27', 'Nam', 'T', '2016', '1664164949', 'lephong2771998@gmail.com', '01', '001', '57', '316'),
+(16021326, 'Trần Văn Phương', '1998-03-14', 'Nam', 'T', '2016', '911232501', 'tranphuongtna1@gmail.com', '01', '001', '60', '391'),
+(16021332, 'Nguyễn Trường Sơn', '1998-01-18', 'Nam', 'T', '2016', '1649136262', 'nguyentruongsonnothing@gmail.com', '01', '001', '64', '221'),
+(16021333, 'Tống Thanh Sơn', '1998-03-05', 'Nam', 'T', '2016', '964821621', 'son.tong.cowboy@gmail.com', '01', '001', '65', '190'),
+(16021335, 'Nguyễn Đức Thái', '1998-07-18', 'Nam', 'T', '2016', '1638581808', 'thaithuongthoi69@gmail.com', '01', '001', '69', '277'),
+(16021342, 'Vũ Thủy Tiên', '1998-03-31', 'Nữ', 'T', '2016', '1626926777', 'thuytien31398@gmail.com', '01', '001', '72', '344'),
+(16021344, 'Nguyễn Mạnh Tiến', '1997-05-10', 'Nam', 'T', '2016', '987854105', 'manhtiennp.97@gmail.com', '01', '001', '74', '311'),
+(16021345, 'Nguyễn Ngọc Tiến', '1998-01-13', 'Nam', 'T', '2016', '974793406', 'monneymrt1998@gmail.com', '01', '001', '75', '116'),
+(16021353, 'Lê Thanh Tuấn', '1998-03-08', 'Nam', 'T', '2016', '1637351222', 'anhtuan98a2@gmail.com', '01', '001', '78', '31'),
+(16021354, 'Nguyễn Minh Tuấn', '1998-10-11', 'Nam', 'T', '2016', '976779378', 'nguyentuan111098@gmail.com', '01', '001', '79', '343'),
+(16021355, 'Vũ Quốc Tuấn', '1998-03-23', 'Nam', 'T', '2016', '1657137799', 'anhtuan23398@gmail.com', '01', '001', '81', '94'),
+(16021357, 'Đặng Quang Tường', '1998-09-28', 'Nam', 'T', '2016', '1659938784', 'songheo29@gmail.com', '01', '001', '83', '431'),
+(16021358, 'Nguyễn Văn Tuyền', '1998-07-21', 'Nam', 'T', '2016', '1686280066', 'vuongtuyen99933666@gmail.com', '01', '001', '82', '69'),
+(16021360, 'Nguyễn Minh Vũ', '1998-03-18', 'Nam', 'T', '2016', '965124424', 'nmvu193@gmail.com', '01', '001', '84', '257'),
+(16021362, 'Trần Quang Bách', '1998-05-06', 'Nam', 'CAC', '2016', '0971.068.4', '16021362@vnu.edu.vn', '01', '001', '1.png', 'person'),
+(16021369, 'Đinh Thị Thùy Dung', '1998-10-13', 'Nữ', 'CAC', '2016', '0972.528.4', '16021369@vnu.edu.vn', '01', '001', '1.png', 'person'),
+(16021374, 'Đoàn Văn Duy', '1998-01-11', 'Nam', 'CAC', '2016', '0969.283.0', '16021374@vnu.edu.vn', '01', '001', '1.png', 'person'),
+(16021376, 'Trần Viết Hà', '1998-07-26', 'Nam', 'CAC', '2016', '0986.658.0', '16021376@vnu.edu.vn', '01', '001', '1.png', 'person'),
+(16021377, 'Đỗ Quang Hải', '1998-09-19', 'Nam', 'CAC', '2016', '0967.381.0', '16021377@vnu.edu.vn', '01', '001', '1.png', 'person'),
+(16021387, 'Phạm Huy Hoàng', '1998-03-16', 'Nam', 'CAC', '2016', '0981.879.4', '16021387@vnu.edu.vn', '01', '001', '1.png', 'person'),
+(16021388, 'Cao Đức Huân', '1996-03-28', 'Nam', 'CAC', '2016', '0868.059.2', '16021388@vnu.edu.vn', '01', '001', '1.png', 'person'),
+(16021396, 'Lương Hoàng Kiên', '1998-05-16', 'Nam', 'CAC', '2016', '0868.614.2', '16021396@vnu.edu.vn', '01', '001', '1.png', 'person'),
+(16021398, 'Đinh Khánh Linh', '1998-12-08', 'Nữ', 'CAC', '2016', '0868.749.2', '16021398@vnu.edu.vn', '01', '001', '1.png', 'person'),
+(16021399, 'Đỗ Huy Linh', '1998-03-28', 'Nam', 'CAC', '2016', '0868.324.2', '16021399@vnu.edu.vn', '01', '001', '1.png', 'person'),
+(16021400, 'Nguyễn Tuấn Linh', '1998-12-01', 'Nam', 'CAC', '2016', '0868.720.2', '16021400@vnu.edu.vn', '01', '001', '1.png', 'person'),
+(16021406, 'Nguyễn Văn Phi', '1998-03-04', 'Nam', 'CAC', '2016', '0985.968.0', '16021406@vnu.edu.vn', '01', '001', '1.png', 'person'),
+(16021408, 'Nguyễn Ngọc Phúc', '1992-10-15', 'Nam', 'CAC', '2016', '0971.499.0', '16021408@vnu.edu.vn', '01', '001', '1.png', 'person'),
+(16021409, 'Nguyễn Anh Phương', '1998-05-19', 'Nam', 'CAC', '2016', '0869.284.7', '16021409@vnu.edu.vn', '01', '001', '1.png', 'person'),
+(16021412, 'Vũ Xuân Quân', '1998-08-04', 'Nam', 'CAC', '2016', '0869.194.7', '16021412@vnu.edu.vn', '01', '001', '1.png', 'person'),
+(16021417, 'Hoàng Văn Thắng', '1998-09-23', 'Nam', 'CAC', '2016', '0987.237.0', '16021417@vnu.edu.vn', '01', '001', '1.png', 'person'),
+(16021418, 'Trần Văn Thắng', '1998-12-25', 'Nam', 'CAC', '2016', '0978.743.0', '16021418@vnu.edu.vn', '01', '001', '1.png', 'person'),
+(16021420, 'Phạm Thuận Thành', '1998-10-06', 'Nam', 'CAC', '2016', '0965.428.4', '16021420@vnu.edu.vn', '01', '001', '1.png', 'person'),
+(16021424, 'Bùi Thị Hoài Thu', '1998-02-20', 'Nữ', 'CAC', '2016', '0868.341.4', '16021424@vnu.edu.vn', '01', '001', '1.png', 'person'),
+(16021427, 'Đồng Xuân Toàn', '1998-08-27', 'Nam', 'CAC', '2016', '0869.190.7', '16021427@vnu.edu.vn', '01', '001', '1.png', 'person'),
+(16021430, 'Nguyễn Anh Tuấn', '1998-08-22', 'Nam', 'CAC', '2016', '0971.488.4', '16021430@vnu.edu.vn', '01', '001', '1.png', 'person'),
+(16021432, 'Trần Duy Việt', '1998-04-28', 'Nam', 'CAC', '2016', '0968.563.0', '16021432@vnu.edu.vn', '01', '001', '1.png', 'person'),
+(16021590, 'Hoàng Mạnh Hưng', '1998-03-13', 'Nam', 'T', '2016', '1629515303', 'chaobalder01@gmail.com', '01', '001', '39', '295'),
+(16021798, 'Đỗ Thành Huy', '1998-11-10', 'Nam', 'T', '2016', '1637382288', 'dothanhhuy98@gmail.com', '01', '001', '35', '376'),
+(16021856, 'Đại Văn Dương', '1997-07-16', 'Nam', 'T', '2016', '964198253', 'dai22992@gmail.com', '01', '001', '18', '190'),
+(16021880, 'Nguyễn Minh Ngọc', '1998-06-22', 'Nam', 'T', '2016', '164633666', 'ngoc220698@gmail.com', '01', '001', '52', '409'),
+(16021898, 'Hoàng Đức Tuấn', '1998-05-03', 'Nam', 'T', '2016', '966143514', 'mrvnese@gmail.com', '01', '001', '77', '319'),
+(16022054, 'Phạm Minh Cường', '1997-11-02', 'Nam', 'T', '2016', '1655366886', 'phamminhcuong211@gmail.com', '01', '001', '9', '117'),
+(16022069, 'Phan Minh Đức', '1998-12-20', 'Nam', 'T', '2016', '1683448585', 'minhduc201298@gmail.com', '01', '001', '23', '326'),
+(16022072, 'Trần Văn Hải', '1998-11-12', 'Nam', 'T', '2016', '1687537799', 'tranhai12111998@gmail.com', '01', '001', '26', '195'),
+(16022075, 'Đoàn Trung Hiếu', '1998-09-26', 'Nam', 'T', '2016', '1205786969', 'dangnguyenthutrang1302@gmail.com', '01', '001', '29', '363'),
+(16022090, 'Vũ Sỹ Kiên', '1998-05-19', 'Nam', 'T', '2016', '1638533849', 'kienhy1998@gmail.com', '01', '001', '42', '372'),
+(16022094, 'Phan Nguyên Lâm', '1998-06-18', 'Nam', 'T', '2016', '966235648', 'phanlam998@gmail.com', '01', '001', '44', '93'),
+(16022108, 'Trần Thị Minh Nguyệt', '1998-08-01', 'Nữ', 'T', '2016', '969475954', 'minhnguyet2061998@gmail.com', '01', '001', '53', '434'),
+(16022118, 'Trần Văn Sơn', '1998-04-15', 'Nam', 'T', '2016', '968733598', 'tr.son15498@gmail.com', '01', '001', '66', '442'),
+(16022119, 'Nguyễn Minh Tâm', '1998-01-23', 'Nam', 'CAC', '2016', '0869.097.7', '16022119@vnu.edu.vn', '01', '001', '1.png', 'person'),
+(16022120, 'Đỗ Thanh Tâm', '1998-09-02', 'Nữ', 'T', '2016', '1657654455', 'dothanhtam.2998@gmail.com', '01', '001', '68', '333'),
+(16022131, 'Đoàn Thị Thoa', '1998-01-20', 'Nữ', 'T', '2016', '964496322', 'doanthoa9804@gmail.com', '01', '001', '70', '405'),
+(16022134, 'Phùng Đình Xuân', '1998-07-11', 'Nam', 'T', '2016', '1625701666', 'dinhxuan9807@gmail.com', '01', '001', '85', '285'),
+(16022145, 'Nguyễn Thanh Tuyên', '1998-03-30', 'Nam', 'CAC', '2016', '0967.365.4', '16022145@vnu.edu.vn', '01', '001', '1.png', 'person'),
+(16022146, 'Lê Công Thái', '1998-07-30', 'Nam', 'CAC', '2016', '0967.36.82', '16022146@vnu.edu.vn', '01', '001', '1.png', 'person'),
+(16022148, 'Trần Minh Trí', '1998-11-06', 'Nam', 'CAC', '2016', '0868.751.2', '16022148@vnu.edu.vn', '01', '001', '1.png', 'person'),
+(16022357, 'Đinh Việt Anh', '1998-10-18', 'Nam', 'T', '2016', '986603861', 'adinhviet@gmail.com', '01', '001', '1.png', '230'),
+(16022358, 'Đỗ Hải Bình', '1997-05-19', 'Nam', 'T', '2016', '1279399888', 'OngHoan2009@gmail.com', '01', '001', '5', '103'),
+(16022359, 'Hoàng Xuân Cường', '1998-09-27', 'Nam', 'T', '2016', '1233649612', 'cuonghx2709@gmail.com', '01', '001', '8', '213'),
+(16022362, 'Bùi Mạnh Dũng', '1998-01-08', 'Nam', 'T', '2016', '962355091', 'dung080198@gmail.com', '01', '001', '10', '414'),
+(16022363, 'Phạm Văn Duy', '1998-12-12', 'Nam', 'T', '2016', '1647195777', 'phamduythanhoaia@gmail.com', '01', '001', '16', '490'),
+(16022364, 'Vũ Đức Duy', '1998-07-07', 'Nam', 'T', '2016', '904263861', 'vuducduy07071998@gmail.com', '01', '001', '17', '193'),
+(16022365, 'Nguyễn Kim Đại', '1998-01-26', 'Nam', 'T', '2016', '969035833', 'kimdai2601@gmail.com', '01', '001', '19', '100'),
+(16022366, 'Nguyễn Tiến Đạt', '1998-02-09', 'Nam', 'T', '2016', '1662490000', 'tiendatnd9298@gmail.com', '01', '001', '20', '408'),
+(16022368, 'Bùi Thị Hiền', '1998-03-13', 'Nữ', 'T', '2016', '1642483366', 'buihien13031998@gmail.com', '01', '001', '27', '447'),
+(16022369, 'Nguyễn Đình Hiếu', '1998-05-16', 'Nam', 'T', '2016', '966563198', 'dinhhieu16598@gmail.com', '01', '001', '30', '81'),
+(16022370, 'Nguyễn Trung Hiếu', '1998-11-30', 'Nam', 'T', '2016', '1626069977', 'hd9xx9@gmail.com', '01', '001', '31', '499'),
+(16022372, 'Trần Vũ Hoàng', '1997-06-10', 'Nam', 'T', '2016', '978688190', 'tranvuhoangjr@gmail.com', '01', '001', '33', '466'),
+(16022374, 'Nguyễn Mậu Đức Huy', '1998-11-23', 'Nam', 'T', '2016', '944231198', 'duchuy0990@gmail.com', '01', '001', '37', '80'),
+(16022375, 'Hà Quang Huy', '1997-07-03', 'Nam', 'T', '2016', '961458525', 'zenlysu3797@gmail.com', '01', '001', '36', '125'),
+(16022378, 'Nguyễn Đức Mạnh', '1998-01-25', 'Nam', 'T', '2016', '986321707', 'phantom25011998@gmail.com', '01', '001', '47', '199'),
+(16022380, 'Nguyễn Văn Oai', '1998-12-23', 'Nam', 'T', '2016', '1625517755', 'nguyenoai102@gmail.com', '01', '001', '56', '83'),
+(16022381, 'Đặng Văn Phúc', '1998-11-16', 'Nam', 'T', '2016', '1694280404', 'dangvanphuchd3@gmail.com', '01', '001', '58', '255'),
+(16022382, 'Nguyễn Văn Phúc', '1997-09-02', 'Nam', 'T', '2016', '967240774', 'gogophuot@gmail.com', '01', '001', '59', '355'),
+(16022383, 'Nguyễn Thị Phượng', '1997-11-02', 'Nữ', 'T', '2016', '1625969797', 'phuongnguyen.tmm@gmail.com', '01', '001', '61', '393'),
+(16022384, 'Vũ Trường Quang', '1997-12-18', 'Nam', 'T', '2016', '1232590992', 'nbvnb123@hotmail.com', '01', '001', '62', '330'),
+(16022385, 'Trần Văn Tuấn', '1998-12-29', 'Nam', 'T', '2016', '1642175777', 'tuantran.hp1998@gmail.com', '01', '001', '80', '250'),
+(16022388, 'Nguyễn Huyền Thư', '1992-03-24', 'Nữ', 'T', '2016', '966210803', 'huyenthunguyeniser@gmail.com', '01', '001', '71', '337'),
+(16022389, 'Trần Văn Trung', '1998-03-05', 'Nam', 'T', '2016', '1215393233', 'trungtran54389@gmail.com', '01', '001', '76', '13'),
+(16022477, 'Lê Lương Tuấn Anh', '1998-03-19', 'Nam', 'T', '2016', '1666469640', 'leluongtuananh98@gmail.com', '01', '001', '2', '447'),
+(16022479, 'Trịnh Quang Sơn', '1998-01-26', 'Nam', 'T', '2016', '1656544567', 'sasorilion2601@gmail.com', '01', '001', '67', '374'),
+(16022492, 'Nguyễn Văn Lâm', '1998-08-04', 'Nam', 'T', '2016', '868608984', 'beobeo1998@gmail.com', '01', '001', '43', '455'),
+(16022493, 'Nguyễn Bá Tiến', '1997-03-18', 'Nam', 'T', '2016', '971925166', 'ngbatienth@gmail.com', '01', '001', '73', '157'),
+(16022498, 'Vũ Thị Thanh Hà', '1997-11-21', 'Nữ', 'T', '2016', '1642673484', 'vuthithanhha1997@gmail.com', '01', '001', '25', '29');
 
 -- --------------------------------------------------------
 
@@ -803,7 +915,9 @@ CREATE TABLE `login` (
 INSERT INTO `login` (`mssv`, `username`, `email`, `password`) VALUES
 (57, 'admin', 'tieuconghoa193@gmail.com', '0cc175b9c0f1b6a831c399e269772661'),
 (58, 'hoatieu', 'hoatieucong@gmail.com', '0cc175b9c0f1b6a831c399e269772661'),
-(59, '16021289', 'v9s9q35kpgs@fakemailgenerator.net', '0cc175b9c0f1b6a831c399e269772661');
+(59, '16021289', 'v9s9q35kpgs@fakemailgenerator.net', '0cc175b9c0f1b6a831c399e269772661'),
+(60, '295', 'hoatieucong@gmail.com.vn', '0cc175b9c0f1b6a831c399e269772661'),
+(61, 'person', 'hoatieucong@vnu.edu.vn', '0cc175b9c0f1b6a831c399e269772661');
 
 -- --------------------------------------------------------
 
@@ -908,7 +1022,8 @@ ALTER TABLE `district`
 --
 ALTER TABLE `login`
   ADD PRIMARY KEY (`mssv`),
-  ADD UNIQUE KEY `username` (`username`,`password`);
+  ADD UNIQUE KEY `username` (`username`,`password`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Chỉ mục cho bảng `province`
@@ -924,7 +1039,17 @@ ALTER TABLE `province`
 -- AUTO_INCREMENT cho bảng `login`
 --
 ALTER TABLE `login`
-  MODIFY `mssv` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `mssv` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+
+--
+-- Các ràng buộc cho các bảng đã đổ
+--
+
+--
+-- Các ràng buộc cho bảng `district`
+--
+ALTER TABLE `district`
+  ADD CONSTRAINT `district_ibfk_1` FOREIGN KEY (`provinceid`) REFERENCES `province` (`provinceid`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

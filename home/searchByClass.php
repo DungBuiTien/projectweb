@@ -1,17 +1,16 @@
 <?php
 session_start();
 if(!$_SESSION['username'] || $_SESSION['username']==NULL){
- header('Localtion : ../admin/login.php');
+     header('Localtion : ../admin/login.php');
 }
 ?>
-<!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Tìm kiếm theo lớp</title>
+    <title>Home</title>
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -25,9 +24,8 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
     <!-- Bootstrap JS -->
     <!-- jQuery Custom Scroller CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-
     <script type="text/javascript" src="./js/index.js"></script>
-
+    
 </head>
 
 <body>
@@ -39,16 +37,16 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
             </div>
             <ul class="list-unstyled components">
                 <li class="active">
-                    <a href="index.php"><i class="fa fa-home fa-lg"></i> Tin tức cựu sinh viên</a>
+                    <a href="#"><i class="fa fa-home fa-lg"></i> Tin tức cựu sinh viên</a>
                 </li>
-                <li>
-                    <a href=""><i class="fa fa-search"></i> Tìm kiếm</a>
+                <li class="active">
+                    <a href="#"><i class="fa fa-search fa-lg"></i> Tìm kiếm</a>
                 </li>
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"><i class="fa fa-file fa-lg"></i> Báo cáo về cựu sinh viên</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li><a href="reportByYear.php">Báo cáo theo niên khóa</a></li>
-                        <li><a href="#">Báo cáo theo lớp học</a></li>
+                        <li><a href="reportByYear.php">Báo cáo theo niên khoá</a></li>
+                        <li><a href="#">Báo cáo theo lớp khoá học</a></li>
                         <li><a href="#">Báo cáo chung</a></li>
                     </ul>
                 </li>
@@ -69,7 +67,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <button type="button" id="sidebarCollapse" class="btn btn-link navbar-btn">
-                            <i class="glyphicon glyphicon-align-left"></i>
+                            <i class="fa fa-align-justify"></i>
                         </button>
                     </div>
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -83,155 +81,122 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                             <li>
                                 <button class="btn btn-default" data-toggle="dropdown">
                                     <?php
-                                    if($_SESSION['username']== "admin" || $_SESSION['username']=="tieuconghoa193@gmail.com"){
-                                        $_SESSION['username']="admin";
-                                        echo '<i class="fa fa-user-shield"> '.$_SESSION['username'].'</i>';
-                                    }
-                                    else  echo '<i class="fa fa-user"> '.$_SESSION['username'].'</i>';
-                                    ?>
+                                            if($_SESSION['username']== "admin" ){
+                                                echo '<i class="fa fa-user-shield"> '.$_SESSION['username'].'</i>';
+                                            }
+                                            else  echo '<i class="fa fa-user"> '.$_SESSION['username'].'</i>';
+                                         ?>
                                     <span class="caret"></span></button>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="changeInfo.php">Cập nhật thông tin</a></li>
-                                        <li><a href="../admin/logout.php">Logout</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
                                 <ul class="dropdown-menu">
-                                    <li><a href="changeInfo.php">Cập nhật thông tin</a></li>
+                                    <li><a href="./">Trang chủ</a></li>
                                     <li><a href="../admin/logout.php">Logout</a></li>
                                 </ul>
                             </li>
                         </ul>
                     </div>
-                </nav>
-                <!-- Page content -->
-                <h2 id="tenlop" style="text-align:center"> Danh sách sinh viên lớp CMT8-1945 </h2>
-                <br>
-                <div id="info" class="panel col-md-offset-2 col-md-8">
-                    <div class="panel-body">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th scope="col"></th>
-                                    <th scope="col">Mã số sinh viên</th>
-                                    <th scope="col">Họ và tên</th>
-                                    <th scope="col">Ngày sinh</th>
-                                    <th scope="col">Chú thích</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td><b>16021234</b></td>
-                                    <td>Trần Hưng Nhật</td>
-                                    <td>30/04/1975</td>
-                                    <td>Lớp trưởng</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td><b>16021234</b></td>
-                                    <td>Trần Hưng Nhật</td>
-                                    <td>30/04/1975</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td><b>16021234</b></td>
-                                    <td>Trần Hưng Nhật</td>
-                                    <td>30/04/1975</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td><b>16021234</b></td>
-                                    <td>Trần Hưng Nhật</td>
-                                    <td>30/04/1975</td>
-                                    <td>Bí thư</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">5</th>
-                                    <td><b>16021234</b></td>
-                                    <td>Trần Hưng Nhật</td>
-                                    <td>30/04/1975</td>
-                                    <td>Lớp phó</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">6</th>
-                                    <td><b>16021234</b></td>
-                                    <td>Trần Hưng Nhật</td>
-                                    <td>30/04/1975</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">7</th>
-                                    <td><b>16021234</b></td>
-                                    <td>Trần Hưng Nhật</td>
-                                    <td>30/04/1975</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">8</th>
-                                    <td><b>16021234</b></td>
-                                    <td>Trần Hưng Nhật</td>
-                                    <td>30/04/1975</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">9</th>
-                                    <td><b>16021234</b></td>
-                                    <td>Trần Hưng Nhật</td>
-                                    <td>30/04/1975</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">10</th>
-                                    <td><b>16021234</b></td>
-                                    <td>Trần Hưng Nhật</td>
-                                    <td>30/04/1975</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">11</th>
-                                    <td><b>16021234</b></td>
-                                    <td>Trần Hưng Nhật</td>
-                                    <td>30/04/1975</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">12</th>
-                                    <td><b>16021234</b></td>
-                                    <td>Trần Hưng Nhật</td>
-                                    <td>30/04/1975</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">13</th>
-                                    <td><b>16021234</b></td>
-                                    <td>Trần Hưng Nhật</td>
-                                    <td>30/04/1975</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">14</th>
-                                    <td><b>16021234</b></td>
-                                    <td>Trần Hưng Nhật</td>
-                                    <td>30/04/1975</td>
-                                    <td></td>
-                                </tr>
+                </div>
+            </nav>
+            <!-- Page content -->
+            <h2 id="tenlop" style="text-align:center"></h2>
+            <br>
+            <?php
+                                        
+                                            require_once("../lib/connect.php");
+                                            $sql2="SELECT COUNT(mssv) as total FROM cuusv where lopkhoahoc='{$_SESSION['class']}'";
+                                            
+                                            $result2= mysqli_query($conn,$sql2);
+                                            $row2 = mysqli_fetch_assoc($result2);
+                                            $total_records = $row2['total'];
+                                            $current_page=1;
+                                            // BƯỚC 3: TÌM LIMIT VÀ CURRENT_PAGE
+                                            if(isset($_GET['page'])) 
+                                                $current_page= $_GET['page'];
+                                            $limit = 10;
+                                            // BƯỚC 4: TÍNH TOÁN TOTAL_PAGE VÀ START
+                                            // tổng số trang
+                                            $total_page = ceil($total_records / $limit);
+                                             
+                                            // Giới hạn current_page trong khoảng 1 đến total_page
+                                            if ($current_page > $total_page){
+                                                $current_page = $total_page;
+                                            }
 
-                            </tbody>
-                        </table>
+                                            else if ($current_page < 1){
+                                                $current_page = 1;
+                                            }
+                                             
+                                            // Tìm Start
+                                            $start = ($current_page - 1) * $limit;
+                                            // BƯỚC 5: TRUY VẤN LẤY DANH SÁCH TIN TỨC
+                                            // Có limit và start rồi thì truy vấn CSDL lấy danh sách tin tức
+                                            $j=1;
+                                            $sql = "SELECT mssv,fullname,birthday,gender FROM cuusv where lopkhoahoc='{$_SESSION['class']}' LIMIT $start, $limit";
+                                            $result = mysqli_query($conn, $sql);
+
+                                    ?>
+                        <div id="info" class="panel col-sm-offset-2 col-xs-8">
+                                        <div class="panel-body">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">STT</th>
+                                                        <th scope="col">Mã số sinh viên</th>
+                                                        <th scope="col">Họ và tên</th>
+                                                        <th scope="col">Ngày sinh</th>
+                                                        <th scope="col">Giới tính</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                <?php
+                                                        
+                                                        while ($row = mysqli_fetch_array($result)){
+                                                            echo "<tr>";
+                                                            echo "<td>".$j++."</td>";
+                                                            echo "<td>" . $row['mssv'] . "</td>";
+                                                            echo "<td>" . $row['fullname'] . "</td>";
+                                                            echo "<td>" . date('d/m/Y',strtotime($row['birthday'])) . "</td>";
+                                                            echo "<td>" . $row['gender'] . "</td>";
+                                                            echo "</tr>";       
+                                                            }
+                                                        echo '<ul class="pagination">';
+                                                        if ($current_page > 1 && $total_page > 1){
+                                                            echo '<li><a href=searchByClass.php?page='.($current_page-1).'>Prev</a></li>';
+                                                        }
+                                                         
+                                                        // Lặp khoảng giữa
+                                                        
+                                                        for ($i = 1; $i <= $total_page; $i++){
+                                                           if($i==$current_page+1){
+                                                               echo'<script type="text/javascript">
+                                                                     $(".pagination2").last().addClass("active");
+                                                                 </script> ';
+                                                           }
+                                                           echo '<li class="pagination2"><a href=searchByClass.php?page='.$i.'>'.$i.'</a></li>'; 
+                                                        }
+                                                         
+                                                        // nếu current_page < $total_page và total_page > 1 mới hiển thị nút prev
+                                                        if ($current_page < $total_page && $total_page > 1){
+                                                            echo '<li><a href=searchByClass.php?page='.($current_page+1).'>Next</a></li></ul>';
+
+                                                        }
+                                                    ?>
+
+                                                </tbody>
+                                            </table>
                     </div>
                 </div>
-                <!-- jQuery CDN - Slim version (=without AJAX) -->
-                <script type="text/javascript">
-                 $(document).ready(function () {
-                     $('#sidebarCollapse').on('click', function () {
-                         $('#sidebar').toggleClass('active');
-                     });
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script type="text/javascript">
+             $(document).ready(function () {
+                 $('#sidebarCollapse').on('click', function () {
+                     $('#sidebar').toggleClass('active');
                  });
-             </script>
-         </body>
+             });
+         </script>
+         <script type="text/javascript">
+             var classes = "<?php echo $_SESSION['class'] ?>";
+             document.getElementById('tenlop').innerHTML="Danh sách lớp "+classes;
+         </script>
+</body>
 
-         </html>
+</html>

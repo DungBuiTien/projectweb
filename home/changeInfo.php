@@ -1,17 +1,9 @@
 <?php
 session_start();
 if(!$_SESSION['username'] || $_SESSION['username']==NULL){
-
-  
-   header('Localtion : ../admin/login.php');
-}
-
-
      echo "<script>alert('Bạn cần đăng nhâp trước');</script>";
      header("Location: ../admin/login.php");
     }
-
-
 
 ?>
 
@@ -22,7 +14,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Thông tin cá nhân</title>
+    <title>Home</title>
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -42,19 +34,19 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                id= $("#province").val();
                $.ajax({
                 url:"../admin/xuly_provice.php",
-
                 type:"post",
                 data: "provinceid="+id,
                 async: true,
                 success: function (kq) {
                     $("#district").html(kq);
                 }
-            });
-             return false;    
-         });
-     });
- </script>
- 
+               });
+               return false;    
+           });
+        });
+    </script>
+    <script type="text/javascript" src="./js/index.js"></script>
+    
 </head>
 
 <body>
@@ -66,10 +58,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
             </div>
             <ul class="list-unstyled components">
                 <li class="active">
-                    <a href="index.php"><i class="fa fa-home fa-lg"></i> Tin tức cựu sinh viên</a>
-                <li>
-                    <a href=""><i class="fa fa-search"></i> Tìm kiếm</a>
-                </li>
+                    <a href="#"><i class="fa fa-home fa-lg"></i> Tin tức cựu sinh viên</a>
                 </li>
                 <li class="active">
                     <a href="#"><i class="fa fa-search fa-lg"></i> Tìm kiếm</a>
@@ -77,16 +66,8 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"><i class="fa fa-file fa-lg"></i> Báo cáo về cựu sinh viên</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-
-                      
-                        <li><a href="reportByYear.php">Báo cáo theo niên khóa</a></li>
-                        <li><a href="#">Báo cáo theo lớp học</a></li>
-
-                      
-                        <li><a href="#">Báo cáo theo niên khoá</a></li>
+                        <li><a href="reportByYear.php">Báo cáo theo niên khoá</a></li>
                         <li><a href="#">Báo cáo theo lớp khoá học</a></li>
-
-                      
                         <li><a href="#">Báo cáo chung</a></li>
                     </ul>
                 </li>
@@ -121,174 +102,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                             <li>
                                 <button class="btn btn-default" data-toggle="dropdown">
                                     <?php
-
-                                  
-                                    if($_SESSION['username']== "admin" || $_SESSION['username']=="tieuconghoa193@gmail.com"){
-                                        $_SESSION['username']="admin";
-                                        echo '<i class="fa fa-user-shield"> '.$_SESSION['username'].'</i>';
-                                    }
-                                    else  echo '<i class="fa fa-user"> '.$_SESSION['username'].'</i>';
-                                    ?>
-                                    <span class="caret"></span></button>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="changeInfo.php">Cập nhật thông tin</a></li>
-                                        <li><a href="../admin/logout.php">Logout</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-                <!-- Page content -->
-                <div id="PersonalInfomation">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><button class="btn btn-default" data-toggle="tab" href="#home">Thông tin</button></li>
-                        <li><button class="btn btn-default" data-toggle="tab" href="#menu1"><i class="fa fa-edit"></i></button></li>
-                    </ul>
-                    <div class="tab-content">
-                        <div id="home" class="tab-pane fade in active">
-                            <div id="searchResult" class="panel col-md-9">
-                                <div class="panel-body">
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col"></th>
-                                                <th scope="col"></th>
-                                                <th scope="col"></th>
-                                                <th scope="col"></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td><b>Họ và tên</b></td>
-                                                <td>Trần Hưng Nhật</td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td><b>Giới tính:</b></td>
-                                                <td>Nam</td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">3</th>
-                                                <td><b>Ngày sinh</b></td>
-                                                <td>30/04/1975</td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">4</th>
-                                                <td><b>Nơi sinh</b></td>
-                                                <td>Hà Nội</td>
-                                                <td><i class="fas fa-search"></i> Tìm theo nơi sinh</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">5</th>
-                                                <td><b>Mã số sinh viên</b></td>
-                                                <td>16021234</td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">6</th>
-                                                <td><b>Lớp</b></td>
-                                                <td>CMT8-1975</td>
-                                                <td><a href ="searchByClass.php"><i class="fas fa-search"></i> Tìm theo lớp</a></td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">7</th>
-                                                <td><b>Niên khóa</b></td>
-                                                <td>2016-2020</td>
-                                                <td><i class="fas fa-search"></i> Tìm theo niên khóa</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">8</th>
-                                                <td><b>Số điện thoại</b></td>
-                                                <td>18008198</td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">9</th>
-                                                <td><b>Địa chỉ email</b></td>
-                                                <td>nhatbeo@gmail.com</td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">10</th>
-                                                <td><b>Nơi ở hiện tại</b></td>
-                                                <td>Gầm cầu Thăng Long, Hà Nội</td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">11</th>
-                                                <td><b>Công việc hiện tại</b></td>
-                                                <td>Ăn hại ở nhà</td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">12</th>
-                                                <td><b>Nơi đang công tác</b></td>
-                                                <td>Nhà</td>
-                                                <td></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div id="summary" class="panel col-md-3">
-                                <img class="panel-img-top img-responsive img-circle" src="./images/avatar.png" alt="panel image cap" style="margin: auto">
-                                <div class="panel-body">
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item" id="hoten"><b>Họ và tên:</b> Trần Hưng Nhật</li>
-                                        <li class="list-group-item" id="ngaysinh"><b>Ngày sinh:</b> 30/04/1975</li>
-                                        <li class="list-group-item" id="lop"><b>Lớp:</b> CMT8-1945</li>
-                                        <li class="list-group-item" id="niemkhoa"><b>Niên khóa:</b> 2016-2020</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="menu1" class="tab-pane fade">
-                            <div class="panel panel-default" style="margin: auto">
-                                <div class="panel-body panel">
-                                    <h2 style="text-align: center">Cập nhật thông tin cá nhân</h2><br/>
-                                    <form class="form-horizontal" action="/action_page.php">
-                                        <div class="form-group">
-                                            <label class="control-label col-sm-2" >Họ tên:</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" >
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-sm-2" >Ngày sinh:</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" >
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-sm-2">Mã số sinh viên:</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" >
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-sm-2">Nơi sinh:</label>
-                                            <div class="col-sm-10">
-                                                <select class="form-control col-sm-3 form-inline" id="province">
-                                                    <option value="none">Tỉnh -Thành phố</option>
-                                                    <?php
-                                                    require_once("../lib/connect.php");
-                                                    $result= mysqli_query($conn,"select provinceid,name,type from province");
-                                                    while ($data=mysqli_fetch_array($result)) {
-                                                     echo "<option value='$data[provinceid]'>$data[type] $data[name]</option>";
-                                                 }
-                                                 mysqli_close();
-                                                 ?>
-                                             </select>
-                                             <select class="form-control col-sm-3 form-inline" id="district">
-
-                                               
                                             if($_SESSION['username']== "admin" ){
-                                                $_SESSION['username']="admin";
                                                 echo '<i class="fa fa-user-shield"> '.$_SESSION['username'].'</i>';
                                             }
                                             else  echo '<i class="fa fa-user"> '.$_SESSION['username'].'</i>';
@@ -330,7 +144,9 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                                                 JOIN province AS b on a.provinceid= b.provinceid
                                                 JOIN district AS c on a.districtid = c.districtid
                                                 WHERE username='{$username}';";
-                                        $row=mysqli_fetch_array(mysqli_query($conn,$sql));
+                                        $num_row= mysqli_num_rows(mysqli_query($conn,$sql));
+                                        $row=mysqli_fetch_array(mysqli_query($conn,$sql));                                   
+
 
                                      ?>
                                     <tbody>
@@ -349,13 +165,21 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                                         <tr>
                                             <th scope="row">3</th>
                                             <td><b>Ngày sinh</b></td>
-                                            <td><?php echo date("d-m-Y",strtotime($row['birthday'])); ?></td>
+                                            <td><?php 
+                                                if (!$row['birthday']) {
+                                                    echo $row['birthday'];
+                                                } else
+                                                echo date("d/m/Y",strtotime($row['birthday'])); ?></td>
                                             <td></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">4</th>
                                             <td><b>Nơi sinh</b></td>
-                                            <td><?php echo $row['district_type']." ".$row['district_name']." - ".$row['province_type']." ".$row['province_name'] ?></td>
+                                            <td><?php 
+                                                if (!$row['district_name']) {
+                                                   echo "";
+                                                }else
+                                                echo $row['district_type']." ".$row['district_name']." - ".$row['province_type']." ".$row['province_name'] ?></td>
                                             <td></td>
                                         </tr>
                                         <tr>
@@ -367,23 +191,30 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                                         <tr>
                                             <th scope="row">6</th>
                                             <td><b>Lớp</b></td>
-                                            <td><?php echo $row['lopkhoahoc'] ?></td>
+                                            <td><?php
+                                            if (!$row['khoahoc']) {
+                                                 echo "";
+                                             }else {
+                                                $_SESSION['class']=$row['lopkhoahoc'];
+                                            echo "QH-".$row['khoahoc']."/CQ-".$row['lopkhoahoc'];
+                                                }?>
+                                            </td>
                                             <td>
-                                                <form method="post" action="searchByClass.php" class="form-group form-inline">
-                                                    <input class="form-control" type="text" placeholder="Tìm theo lớp">
-                                                    <button type="submit" class="btn btn-link"><i class="fa fa-search"></i></button>
+                                                <form method="post" action="searchByClass.php">
+                                                    <button type="submit" name="searchByClass" class="btn btn-primary btn-xs"><i class="fa fa-search"></i><span>Tìm theo lớp</span></button>
+                                                    
                                                 </form>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th scope="row">7</th>
                                             <td><b>Khoá học</b></td>
-                                            <td><?php echo "QH-".$row['khoahoc']."-I/CQ"; ?></td>
+                                            <td><?php 
+                                                if (!$row['khoahoc']) {
+                                                    echo "";
+                                                } else
+                                                echo "QH-".$row['khoahoc']."-I/CQ"; ?></td>
                                             <td>
-                                                <form method="post" action="" class="form-group form-inline">
-                                                    <input class="form-control" type="text" placeholder="Tìm theo khoá">
-                                                    <button type="submit" class="btn btn-link"><i class="fa fa-search"></i></button>
-                                                </form>
                                             </td>
                                         </tr>
                                         <tr>
@@ -403,13 +234,28 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                             </div>
                         </div>
                         <div id="summary" class="panel col-md-3">
-                            <img class="panel-img-top img-responsive img-circle" <?php echo "src='./images/".$row['image']."'" ?> alt="panel image cap" style="margin: auto">
+                            <img class="panel-body img-responsive img-thumbnail" <?php echo "src='./images/".$row['image']."'" ?> alt="panel image cap">
                             <div class="panel-body">
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item" id="hoten"><b>Họ và tên: </b><?php echo $row['fullname'] ?></li>
-                                    <li class="list-group-item" id="ngaysinh"><b>Ngày sinh: </b><?php echo date("d-m-Y",strtotime($row['birthday'])); ?></li>
-                                    <li class="list-group-item" id="lop"><b>Lớp: </b><?php echo $row['lopkhoahoc'] ?></li>
-                                    <li class="list-group-item" id="niemkhoa"><b>Khoá học: </b><?php echo "QH-".$row['khoahoc']."-I/CQ"; ?></li>
+                                    <li class="list-group-item" id="ngaysinh"><b>Ngày sinh: </b><?php 
+                                                if (!$row['birthday']) {
+                                                    echo $row['birthday'];
+                                                } else
+                                                echo date("d/m/Y",strtotime($row['birthday'])); ?></li>
+                                    <li class="list-group-item" id="lop"><b>Lớp: </b><?php
+                                            if (!$row['khoahoc']) {
+                                                 echo "";
+                                             }else {
+                                                $_SESSION['class']=$row['lopkhoahoc'];
+                                            echo "QH-".$row['khoahoc']."/CQ-".$row['lopkhoahoc'];
+                                                }?></li>
+                                    <li class="list-group-item" id="niemkhoa"><b>Khoá học: </b><?php 
+                                            if (!$row['khoahoc']) {
+                                                echo "";
+                                            } else
+                                            echo "QH-".$row['khoahoc']."-I/CQ"; ?>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -460,8 +306,6 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                                                 ?>
                                             </select>
                                             <select class="form-control col-sm-3 form-inline" id="district" name="district" required />
-
-                                          
                                                 <option value="none">Quận - Huyện - Thị xã</option>
                                             </select>
                                         </div>
@@ -511,12 +355,12 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
     </div>
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script type="text/javascript">
-       $(document).ready(function () {
-           $('#sidebarCollapse').on('click', function () {
-               $('#sidebar').toggleClass('active');
-           });
-       });
-   </script>
+             $(document).ready(function () {
+                 $('#sidebarCollapse').on('click', function () {
+                     $('#sidebar').toggleClass('active');
+                 });
+             });
+         </script>
 </body>
 
 </html>

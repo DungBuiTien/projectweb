@@ -165,3 +165,6 @@ select.col-sm-3 {
     margin-left: auto;
     margin-right: auto;
 }
+.panel-img-top{
+   margin-left: 20px;
+}

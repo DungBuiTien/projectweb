@@ -46,7 +46,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
             <li>
                 <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"><i class="fa fa-file fa-lg"></i> Báo cáo về cựu sinh viên</a>
                 <ul class="collapse list-unstyled" id="pageSubmenu">
-                    <li><a href="#">Báo cáo theo niên khóa</a></li>
+                    <li><a href="reportByYear.php">Báo cáo theo niên khoá</a></li>
                     <li><a href="#">Báo cáo theo lớp học</a></li>
                     <li><a href="#">Báo cáo chung</a></li>
                 </ul>
@@ -150,7 +150,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
             $('#sidebar').toggleClass('active');
         });
     });
-</script >
+</script>
 <script id="Line Chart js">
     <!-- Line Chart js -->
     //line
@@ -161,7 +161,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
             labels: ["2011", "2012", "2013", "2014", "2015", "2016", "2017"],
             datasets: [{
                 label: "Tỉ lệ cựu sinh viên tốt nghiệp có việc liên quan đến ngành học (%)",
-                data: [65, 59, 71, 75, 68, 72, 69],
+                data: [65, 59, 71, 85, 68, 72, 98],
                 backgroundColor: [
                     'rgba(105, 0, 132, .2)',
                 ],
@@ -186,7 +186,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
             labels: ["2011", "2012", "2013", "2014", "2015", "2016","2017"],
             datasets: [{
                 label: 'Trung bình lương qua các năm',
-                data: [12000000, 19000000, 15000000, 16000000, 20000000, 13000000,15000000],
+                data: [1200000, 1900000, 1500000, 1600000, 1000000, 1300000,1500000],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',

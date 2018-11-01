@@ -53,12 +53,12 @@
         if ($username == "" || $password =="") {
             $error= "Email hoặc password bạn không được để trống!";
         } else {
-            $sql = "select * from login where username = '$username' or email='$username'";
+            $sql = "select * from login where username = '$username'";
             $query = mysqli_query($conn,$sql);
             $num_rows = mysqli_num_rows($query);
             $row = mysqli_fetch_array($query);
             $password= md5($password);
-            if ($num_rows ==0) {
+            if ($num_rows == 0) {
                 $error=  "Tên đăng nhập không tồn tại !";
             } else if ($password != $row['password']){
                 $error=  "Mật khẩu không đúng !";

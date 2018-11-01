@@ -56,19 +56,22 @@
             } else if(mysqli_num_rows(mysqli_query($conn,"SELECT username FROM login WHERE username = '$username'")) > 0){
                $error="Tài khoản đã tồn tại. <a href='javascript: history.go(-1)'>Thử lại</a>";
             // kiểm tra email nhập vào hợp lệ
-            } else if (!preg_match('/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/',$email))
+            } else if(!preg_match('/^[A-Za-z0-9_\.]{6,32}$/',$username)){
+                $error= "Tên đăng nhập này không hợp lệ. Vui sử dụng tên khác. <a href='javascript: history.go(-1)'>Thử lại</a>";
+            }
+             else if (!preg_match('/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/',$email))
             {
                $error= "Email này không hợp lệ. Vui lòng nhập email khác. <a href='javascript: history.go(-1)'>Thử lại</a>";
             // kiểm tra email nhập vào đã có trong databases
             }else if (mysqli_num_rows(mysqli_query($conn,"SELECT email FROM login WHERE email='$email'")) > 0){
                  
-                $error= "Email này đã có người dùng. Vui lòng chọn Email khác. <a href='javascript: history.go(-1)'>Thử lại</a>";
+                $error= "Email này đã có người dùng. Vui lòng chọn email khác. <a href='javascript: history.go(-1)'>Thử lại</a>";
             // add vào databases
             }else{            
                 @$addmember = mysqli_query($conn,"INSERT INTO login (username,password,email) VALUES ('{$username}','{$password}','{$email}')");
 
                 if ($addmember)
-                   $error= "Quá trình đăng ký thành công. <a href='/'>Về trang chủ</a>";
+                   $error= "Quá trình đăng ký thành công. <a href='login.php'>Đăng nhập</a>";
                 else
                    $error="Có lỗi xảy ra trong quá trình đăng ký. <a href='signup.php'>Thử lại</a>";
            }
