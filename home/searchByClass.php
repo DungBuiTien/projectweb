@@ -1,16 +1,20 @@
 <?php
 session_start();
+
 if(!$_SESSION['username'] || $_SESSION['username']==NULL){
-     header('Localtion : ../admin/login.php');
+    header("Location: ../admin/login.php");
+}
+elseif(!isset($_SESSION['class']) || !$_SESSION['khoahoc'] || !$_SESSION['class']){
+    header("Location: changeInfo.php");
 }
 ?>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Home</title>
+    <title>Danh sách lớp<?=$_SESSION['class'] ?></title>
+    <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -25,7 +29,6 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
     <!-- jQuery Custom Scroller CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
     <script type="text/javascript" src="./js/index.js"></script>
-    
 </head>
 
 <body>
@@ -57,7 +60,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                     <a href="#"><i class="fa fa-question-circle fa-lg"></i> Trung tâm trợ giúp</a>
                 </li>
                 <li>
-                    <a href="##"><i class="fa fa-cog fa-lg"></i> Cài đặt tài khoản</a>
+                    <a href="changeInfo.php"><i class="fa fa-cog fa-lg"></i> Cài đặt tài khoản</a>
                 </li>
             </ul>
         </nav>
@@ -72,7 +75,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                     </div>
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-left">
-                            <form class="form-group form-inline">
+                            <form class="form-group form-inline" method="POST" action="error404.php">
                                 <input class="form-control" type="text" placeholder="Search.." name="search">
                                 <button type="submit" class="btn btn-default">Search</button>
                             </form>
@@ -89,6 +92,9 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                                     <span class="caret"></span></button>
                                 <ul class="dropdown-menu">
                                     <li><a href="./">Trang chủ</a></li>
+                                    <?php if($_SESSION['username']== "admin" || $_SESSION['username']== "anonymous")
+                                    echo '<li><a href="../admin">Quay lại trang quản trị</a></li>';
+                                     ?>
                                     <li><a href="../admin/logout.php">Logout</a></li>
                                 </ul>
                             </li>
@@ -99,104 +105,93 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
             <!-- Page content -->
             <h2 id="tenlop" style="text-align:center"></h2>
             <br>
-            <?php
-                                        
-                                            require_once("../lib/connect.php");
-                                            $sql2="SELECT COUNT(mssv) as total FROM cuusv where lopkhoahoc='{$_SESSION['class']}'";
-                                            
-                                            $result2= mysqli_query($conn,$sql2);
-                                            $row2 = mysqli_fetch_assoc($result2);
-                                            $total_records = $row2['total'];
-                                            $current_page=1;
-                                            // BƯỚC 3: TÌM LIMIT VÀ CURRENT_PAGE
-                                            if(isset($_GET['page'])) 
-                                                $current_page= $_GET['page'];
-                                            $limit = 10;
-                                            // BƯỚC 4: TÍNH TOÁN TOTAL_PAGE VÀ START
-                                            // tổng số trang
-                                            $total_page = ceil($total_records / $limit);
-                                             
-                                            // Giới hạn current_page trong khoảng 1 đến total_page
-                                            if ($current_page > $total_page){
-                                                $current_page = $total_page;
-                                            }
+            <!--Phân trang kết quả tìm kiếm -->
+            <?php                        
+                require_once("../lib/connect.php");
+                $sql2="SELECT COUNT(mssv) as total FROM cuusv where khoahoc='{$_SESSION['khoahoc']}' AND lopkhoahoc='{$_SESSION['class']}'";
+                
+                $result2= mysqli_query($conn,$sql2);
+                $row2 = mysqli_fetch_assoc($result2);
+                $total_records = $row2['total'];
+                $current_page=1;
+                // BƯỚC 3: TÌM LIMIT VÀ CURRENT_PAGE
+                if(isset($_GET['page'])) 
+                    $current_page= $_GET['page'];
+                $limit = 10;
+                // BƯỚC 4: TÍNH TOÁN TOTAL_PAGE VÀ START
+                // tổng số trang
+                $total_page = ceil($total_records / $limit);
+                 
+                // Giới hạn current_page trong khoảng 1 đến total_page
+                if ($current_page > $total_page){
+                     $current_page=$total_page;
+                }
 
-                                            else if ($current_page < 1){
-                                                $current_page = 1;
-                                            }
-                                             
-                                            // Tìm Start
-                                            $start = ($current_page - 1) * $limit;
-                                            // BƯỚC 5: TRUY VẤN LẤY DANH SÁCH TIN TỨC
-                                            // Có limit và start rồi thì truy vấn CSDL lấy danh sách tin tức
-                                            $j=1;
-                                            $sql = "SELECT mssv,fullname,birthday,gender FROM cuusv where lopkhoahoc='{$_SESSION['class']}' LIMIT $start, $limit";
-                                            $result = mysqli_query($conn, $sql);
+                else if ($current_page < 1 || !is_numeric($current_page)){
+                    $current_page=1;
+                }
+                 
+                // Tìm Start
+                $start = ($current_page - 1) * $limit;
+                // BƯỚC 5: TRUY VẤN LẤY DANH SÁCH TIN TỨC
+                // lấy danh sách sinh viên có cùng lớp và khoá
+                
+                $sql = "SELECT mssv,fullname,birthday,gender FROM cuusv where khoahoc='{$_SESSION['khoahoc']}' AND lopkhoahoc='{$_SESSION['class']}' LIMIT $start, $limit";
+                $result = mysqli_query($conn, $sql);
 
-                                    ?>
-                        <div id="info" class="panel col-sm-offset-2 col-xs-8">
-                                        <div class="panel-body">
-                                            <table class="table table-striped">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col">STT</th>
-                                                        <th scope="col">Mã số sinh viên</th>
-                                                        <th scope="col">Họ và tên</th>
-                                                        <th scope="col">Ngày sinh</th>
-                                                        <th scope="col">Giới tính</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                <?php
-                                                        
-                                                        while ($row = mysqli_fetch_array($result)){
-                                                            echo "<tr>";
-                                                            echo "<td>".$j++."</td>";
-                                                            echo "<td>" . $row['mssv'] . "</td>";
-                                                            echo "<td>" . $row['fullname'] . "</td>";
-                                                            echo "<td>" . date('d/m/Y',strtotime($row['birthday'])) . "</td>";
-                                                            echo "<td>" . $row['gender'] . "</td>";
-                                                            echo "</tr>";       
-                                                            }
-                                                        echo '<ul class="pagination">';
-                                                        if ($current_page > 1 && $total_page > 1){
-                                                            echo '<li><a href=searchByClass.php?page='.($current_page-1).'>Prev</a></li>';
-                                                        }
-                                                         
-                                                        // Lặp khoảng giữa
-                                                        
-                                                        for ($i = 1; $i <= $total_page; $i++){
-                                                           if($i==$current_page+1){
-                                                               echo'<script type="text/javascript">
-                                                                     $(".pagination2").last().addClass("active");
-                                                                 </script> ';
-                                                           }
-                                                           echo '<li class="pagination2"><a href=searchByClass.php?page='.$i.'>'.$i.'</a></li>'; 
-                                                        }
-                                                         
-                                                        // nếu current_page < $total_page và total_page > 1 mới hiển thị nút prev
-                                                        if ($current_page < $total_page && $total_page > 1){
-                                                            echo '<li><a href=searchByClass.php?page='.($current_page+1).'>Next</a></li></ul>';
-
-                                                        }
-                                                    ?>
-
-                                                </tbody>
-                                            </table>
-                    </div>
-                </div>
-    <!-- jQuery CDN - Slim version (=without AJAX) -->
-    <script type="text/javascript">
-             $(document).ready(function () {
-                 $('#sidebarCollapse').on('click', function () {
-                     $('#sidebar').toggleClass('active');
-                 });
-             });
-         </script>
-         <script type="text/javascript">
-             var classes = "<?php echo $_SESSION['class'] ?>";
-             document.getElementById('tenlop').innerHTML="Danh sách lớp "+classes;
-         </script>
+            ?>
+            <div id="info" class="panel col-sm-offset-2 col-xs-8">
+                <div class="panel-body">
+                    <table class="table table-responsive table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">STT</th>
+                                <th scope="col">Mã số sinh viên</th>
+                                <th scope="col">Họ và tên</th>
+                                <th scope="col">Ngày sinh</th>
+                                <th scope="col">Giới tính</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $j=$start+1;
+                                
+                                while ($row = mysqli_fetch_array($result)){
+                                    echo "<tr>";
+                                    echo "<td>".$j++."</td>";
+                                    echo "<td>" . $row['mssv'] . "</td>";
+                                    echo "<td>" . $row['fullname'] . "</td>";
+                                    echo "<td>" . date('d/m/Y',strtotime($row['birthday'])) . "</td>";
+                                    echo "<td>" . $row['gender'] . "</td>";
+                                    echo "</tr>";
+                                          
+                                    }
+                                echo " </tbody></table></div></div>";
+                                if($total_page!=1){
+                                    echo '<div class="container-fluid" style="width:30%;margin:auto;">
+                                    <ul class="pagination">';                                                                         
+                                   // hiển thị nút prev
+                                    echo '<li><a href=searchByClass.php?page='.($current_page-1).'>Prev</a></li>';
+                                    // Lặp khoảng giữa
+                                    
+                                    for ($i = 1; $i <= $total_page; $i++){
+                                       if($i==$current_page){
+                                           echo'<li class="pagination2 active"><a href=searchByClass.php?page='.$i.'>'.$i.'</a></li>';
+                                       } else
+                                        echo '<li class="pagination2"><a href=searchByClass.php?page='.$i.'>'.$i.'</a></li>'; 
+                                    }
+                                    // hiển thị nút next
+                                    echo '<li><a href=searchByClass.php?page='.($current_page+1).'>Next</a></li></ul></div>';
+                                }
+                            ?>
+                            <!-- jQuery CDN - Slim version (=without AJAX) -->
+                
+        <script type="text/javascript">
+            var khoahoc = "<?php echo $_SESSION['khoahoc'] ?>";
+            var classes = "<?php echo $_SESSION['class'] ?>";
+            document.getElementById('tenlop').innerHTML = "Danh sách lớp QH-" + khoahoc + "/CQ-" + classes;
+        </script>
+         
 </body>
 
 </html>

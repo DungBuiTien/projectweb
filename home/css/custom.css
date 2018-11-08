@@ -36,3 +36,10 @@ form {
     margin: 0px;
     padding: 0px;
 }
+input{
+    width: 100%;
+    border: 1px solid #ccc;
+}
+tr:hover{
+       background-color: #ECFBD4;
+}

@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 if(!$_SESSION['username'] || $_SESSION['username']==NULL){
      echo "<script>alert('Bạn cần đăng nhâp trước');</script>";
      header("Location: ../admin/login.php");
@@ -7,7 +8,6 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
 
 ?>
 
-<!DOCTYPE html>
 <html>
 
 <head>
@@ -15,6 +15,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Home</title>
+    <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -31,17 +32,17 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
     <script>
         $(document).ready(function(){
            $("#province").change(function(){
-               id= $("#province").val();
-               $.ajax({
-                url:"../admin/xuly_provice.php",
-                type:"post",
-                data: "provinceid="+id,
-                async: true,
-                success: function (kq) {
-                    $("#district").html(kq);
-                }
-               });
-               return false;    
+                id= $("#province").val();
+                $.ajax({
+                    url:"../admin/xuly_provice.php",
+                    type:"post",
+                    data: "provinceid="+id,
+                    async: false,
+                    success: function (kq) {
+                        $("#district").html(kq);
+                    }
+                });
+                return false;   
            });
         });
     </script>
@@ -78,7 +79,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                     <a href="#"><i class="fa fa-question-circle fa-lg"></i> Trung tâm trợ giúp</a>
                 </li>
                 <li>
-                    <a href="##"><i class="fa fa-cog fa-lg"></i> Cài đặt tài khoản</a>
+                    <a href="changeInfo.php"><i class="fa fa-cog fa-lg"></i> Cài đặt tài khoản</a>
                 </li>
             </ul>
         </nav>
@@ -93,7 +94,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                     </div>
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-left">
-                            <form class="form-group form-inline">
+                            <form class="form-group form-inline" method="POST" action="error404.php">
                                 <input class="form-control" type="text" placeholder="Search.." name="search">
                                 <button type="submit" class="btn btn-default">Search</button>
                             </form>
@@ -105,11 +106,14 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                                             if($_SESSION['username']== "admin" ){
                                                 echo '<i class="fa fa-user-shield"> '.$_SESSION['username'].'</i>';
                                             }
-                                            else  echo '<i class="fa fa-user"> '.$_SESSION['username'].'</i>';
+                                            else  echo '<i class="fa fa-user">  '.$_SESSION['username'].'</i>';
                                          ?>
                                     <span class="caret"></span></button>
                                 <ul class="dropdown-menu">
                                     <li><a href="./">Trang chủ</a></li>
+                                    <?php if($_SESSION['username']== "admin" || $_SESSION['username']== "anonymous")
+                                    echo '<li><a href="../admin">Quay lại trang quản trị</a></li>';
+                                     ?>
                                     <li><a href="../admin/logout.php">Logout</a></li>
                                 </ul>
                             </li>
@@ -120,11 +124,11 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
             <!-- Page content -->
             <div id="PersonalInfomation">
                 <ul class="nav nav-tabs">
-                    <li class="active"><button class="btn btn-default" data-toggle="tab" href="#home">Thông tin</button></li>
-                    <li><button class="btn btn-link" data-toggle="tab" href="#menu1"><i class="fa fa-edit"></i></button></li>
+                    <li id="li-info" ><button class="btn btn-default" data-toggle="tab" href="#home">Thông tin</button></li>
+                    <li id="li-edit" ><button class="btn btn-link" data-toggle="tab" href="#menu1"><i class="fa fa-edit"></i></button></li>
                 </ul>
                 <div class="tab-content">
-                    <div id="home" class="tab-pane fade in active">
+                    <div id="home" class="tab-pane fade in">
                         <div id="searchResult" class="panel col-md-9">
                             <div class="panel-body">
                                 <table class="table table-striped">
@@ -139,15 +143,13 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                                     <?php 
                                         require_once("../lib/connect.php");
                                         $username=$_SESSION['username'];
-                                        $sql="SELECT a.mssv,a.fullname,a.birthday,a.gender,a.phone_number,a.email,a.image,a.lopkhoahoc,a.khoahoc,b.name as province_name,b.type as province_type,c.type as district_type,c.name as district_name
+                                        $sql="SELECT a.mssv,a.fullname,a.birthday,a.work,a.salary,.a.gender,a.phone_number,a.salary,a.email,a.image,a.lopkhoahoc,a.provinceid,a.khoahoc,a.districtid,b.name as province_name,b.type as province_type,c.type as district_type,c.name as district_name
                                                 FROM cuusv AS a
                                                 JOIN province AS b on a.provinceid= b.provinceid
                                                 JOIN district AS c on a.districtid = c.districtid
                                                 WHERE username='{$username}';";
                                         $num_row= mysqli_num_rows(mysqli_query($conn,$sql));
                                         $row=mysqli_fetch_array(mysqli_query($conn,$sql));                                   
-
-
                                      ?>
                                     <tbody>
                                         <tr>
@@ -192,17 +194,18 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                                             <th scope="row">6</th>
                                             <td><b>Lớp</b></td>
                                             <td><?php
-                                            if (!$row['khoahoc']) {
+                                            if (!$row['lopkhoahoc']) {
                                                  echo "";
+                                                 $_SESSION['class']="";
                                              }else {
+                                                $_SESSION['khoahoc']= $row['khoahoc'];
                                                 $_SESSION['class']=$row['lopkhoahoc'];
                                             echo "QH-".$row['khoahoc']."/CQ-".$row['lopkhoahoc'];
                                                 }?>
                                             </td>
                                             <td>
-                                                <form method="post" action="searchByClass.php">
-                                                    <button type="submit" name="searchByClass" class="btn btn-primary btn-xs"><i class="fa fa-search"></i><span>Tìm theo lớp</span></button>
-                                                    
+                                                <form method="post" action="searchByClass.php?class=<?= md5($_SESSION['class']) ?>">
+                                                    <button type="submit" name="searchByClass" class="btn btn-default btn-xs" id="search"><i class="fa fa-search"></i><span>Tìm theo lớp</span></button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -234,7 +237,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                             </div>
                         </div>
                         <div id="summary" class="panel col-md-3">
-                            <img class="panel-body img-responsive img-thumbnail" <?php echo "src='./images/".$row['image']."'" ?> alt="panel image cap">
+                            <img class="panel-body img-responsive img-thumbnail" <?php echo "src='./images/".$row['image']."'" ?> alt="avatar">
                             <div class="panel-body">
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item" id="hoten"><b>Họ và tên: </b><?php echo $row['fullname'] ?></li>
@@ -244,7 +247,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                                                 } else
                                                 echo date("d/m/Y",strtotime($row['birthday'])); ?></li>
                                     <li class="list-group-item" id="lop"><b>Lớp: </b><?php
-                                            if (!$row['khoahoc']) {
+                                            if (!$row['lopkhoahoc']) {
                                                  echo "";
                                              }else {
                                                 $_SESSION['class']=$row['lopkhoahoc'];
@@ -268,44 +271,43 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                                     <div class="form-group">
                                         <label class="control-label col-sm-2" >Họ tên:</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="fullname" placeholder="VD: Nguyễn Văn A" required />
+                                            <input type="text" class="form-control" name="fullname" value="<?= $row['fullname']; ?>"  />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-sm-2" >Ngày sinh:</label>
                                         <div class="col-sm-10">
-                                            <input type="date" class="form-control" name="birthday" required/>
+                                            <input type="date" class="form-control" name="birthday" value="<?= $row['birthday']; ?>" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-sm-2" >Giới tính:</label>
                                         <div class="col-sm-10">
-                                            <label class="radio-inline"><input type="radio" name="gender" checked="checked" value="0">Nam</label>
-                                            <label class="radio-inline"><input type="radio" name="gender" value="1">Nữ</label>
-                                            <label class="radio-inline"><input type="radio" name="gender" value="2">Khác</label>
+                                            <label class="radio-inline"><input type="radio" name="gender" checked="checked" value="Nam">Nam</label>
+                                            <label class="radio-inline"><input type="radio" name="gender" value="Nữ">Nữ</label>
+                                            <label class="radio-inline"><input type="radio" name="gender" value="Khác">Khác</label>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-sm-2">Mã số sinh viên:</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="mssv" placeholder="14021402" required/>
+                                            <input type="text" class="form-control" name="mssv" value="<?php echo $row['mssv']; ?>" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-sm-2">Nơi sinh:</label>
                                         <div class="col-sm-10">
-                                            <select class="form-control col-sm-3 form-inline" id="province" name="province" required>
+                                            <select class="form-control col-sm-3 form-inline" id="province" value="<?= $row['province_name']; ?>" name="province" >
                                                 <option value="none">Tỉnh -Thành phố</option>
                                                 <?php
                                                     require_once("../lib/connect.php");
                                                     $result= mysqli_query($conn,"select provinceid,name,type from province");
                                                     while ($data=mysqli_fetch_array($result)) {
-                                                       echo "<option value='$data[provinceid]'>$data[name]</option>";
+                                                       echo "<option id='$data[provinceid]' value='$data[provinceid]'>$data[name]</option>";
                                                     }
-                                                    mysqli_close();
                                                 ?>
                                             </select>
-                                            <select class="form-control col-sm-3 form-inline" id="district" name="district" required />
+                                            <select class="form-control col-sm-3 form-inline" id="district" name="district" value="<?= $row['district_name']; ?>" />
                                                 <option value="none">Quận - Huyện - Thị xã</option>
                                             </select>
                                         </div>
@@ -313,31 +315,47 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                                     <div class="form-group">
                                         <label class="control-label col-sm-2">Khoá học:</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="khoahoc" class="form-control" placeholder="VD: QH-2016 hoặc 2016" required />
+                                            <input type="text" name="khoahoc" class="form-control" value="<?= $row['khoahoc']; ?>"  />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-sm-2">Lóp:</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="lopkhoahoc" class="form-control" placeholder="VD: CA,CA-CLC hoặc K59CA" required />
+                                            <input type="text" name="lopkhoahoc" class="form-control" value="<?= $row['lopkhoahoc']; ?>"  />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-sm-2">Số điện thoại</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="phone_number" placeholder="VD:0988888888" required/>
+                                            <input type="text" class="form-control" name="phone_number" value="<?= $row['phone_number']; ?>" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-sm-2">Email liên hệ:</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="email" placeholder="VD: admin@domain.com" required />
+                                            <input type="text" class="form-control" name="email" value="<?php echo $row['email']; ?>"  />
+                                        </div>
+                                    </div>
+                                    
+                                   <div class="form-group">
+                                        <label class="control-label col-sm-2" >Mức lương(Triệu đồng): </label>
+                                        <div class="col-sm-10">
+                                            <label class="radio-inline"><input type="radio" name="salary" value="0">5-10</label>
+                                            <label class="radio-inline"><input type="radio" name="salary" value="1">10-20</label>
+                                            <label class="radio-inline"><input type="radio" name="salary" value="2">20-50</label>
+                                            <label class="radio-inline"><input type="radio" name="salary" value="3">>50</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2" >Vị trí làm việc: </label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="work" value="<?= $row['work'] ?>" class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-sm-2">Ảnh</label>
                                         <div class="col-sm-10">
-                                            <input type="file" name="image"  />
+                                            <input type="file" name="image"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -354,13 +372,53 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
         </div>
     </div>
     <!-- jQuery CDN - Slim version (=without AJAX) -->
-    <script type="text/javascript">
-             $(document).ready(function () {
-                 $('#sidebarCollapse').on('click', function () {
-                     $('#sidebar').toggleClass('active');
-                 });
-             });
-         </script>
+    <script>
+             // nếu không có lớp thì không cho search sinh viên cùng lớp
+             var classes = "<?php echo $_SESSION['class']; ?>";
+             if(classes=="")
+                document.getElementById("search").setAttribute("disabled", "disabled");
+            //mặc định tab thông tin là active
+            $("#li-info").addClass("active");
+            $("#home").addClass("active");
+    </script>
+    <script> 
+            
+            //in ra giới tính của người dùng
+            var gender = "<?= $row['gender']?>";
+            for(var i=3;i<6;i++){
+                if(document.getElementsByTagName("input")[i].value==gender){
+                    document.getElementsByTagName("input")[i].setAttribute('checked','checked');
+                }
+            }
+            // in ra mức lương của người dùng
+            var salary = "<?= $row['salary']?>";
+            for(var i=11;i<15;i++){
+                if(document.getElementsByTagName("input")[i].value==salary){
+                    document.getElementsByTagName("input")[i].setAttribute('checked','checked');
+                }
+            }
+            //in ra tỉnh/ thành của người dùng
+            for(var i=1;i<64;i++){
+                if(document.getElementsByTagName("option")[i].value == "<?= $row['provinceid']?>")
+                document.getElementsByTagName("option")[i].setAttribute('selected','selected');
+            }
+            // hiển thị thông báo sau khi cập nhật lại thông tin
+            var notice = "<?= $_SESSION['error'] ?>";
+            // nếu error mang 2 giá trị kia thì đưa người dùng sang tab chỉnh sửa
+            if(notice=="Có lỗi xảy ra" || notice=="Vui lòng nhập file hình ảnh!!"){
+                $("#li-info").removeClass("active");
+                $("#home").removeClass("active");
+                $("#li-edit").addClass("active");
+                $("#menu1").addClass("active in");
+
+            }
+
+            if(notice){
+                alert(notice);
+                <?php  unset($_SESSION['error']); ?>
+            }
+            
+    </script>
 </body>
 
 </html>

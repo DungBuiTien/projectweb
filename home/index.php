@@ -16,6 +16,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
     <title>Home</title>
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <!-- Bootstrap CSS CDN -->
@@ -23,6 +24,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <script src="js/index.js"></script>
 
 </head>
 
@@ -55,7 +57,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                     <a href="#"><i class="fa fa-question-circle fa-lg"></i> Trung tâm trợ giúp</a>
                 </li>
                 <li>
-                    <a href="##"><i class="fa fa-cog fa-lg"></i> Cài đặt tài khoản</a>
+                    <a href="changeInfo.php"><i class="fa fa-cog fa-lg"></i> Cài đặt tài khoản</a>
                 </li>
             </ul>
         </nav>
@@ -70,7 +72,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                     </div>
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-left">
-                            <form class="form-group form-inline">
+                            <form class="form-group form-inline" method="POST" action="error404.php">
                                 <input class="form-control" type="text" placeholder="Search.." name="search">
                                 <button type="submit" class="btn btn-default">Search</button>
                             </form>
@@ -86,6 +88,9 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                                     <span class="caret"></span></button>
                                 <ul class="dropdown-menu">
                                     <li><a href="changeInfo.php">Cập nhật thông tin</a></li>
+                                    <?php if($_SESSION['username']== "admin" || $_SESSION['username']== "anonymous")
+                                    echo '<li><a href="../admin">Quay lại trang quản trị</a></li>';
+                                     ?>
                                     <li><a href="../admin/logout.php">Logout</a></li>
                                 </ul>
                             </li>
@@ -293,12 +298,5 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <!-- Bootstrap Js CDN -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function() {
-    $('#sidebarCollapse').on('click', function() {
-        $('#sidebar').toggleClass('active');
-    });
-});
-</script>
 </body>
 </html>
