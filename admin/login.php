@@ -71,7 +71,6 @@
                     header("Location: ../home");
                 }
                 // Thực thi hành động sau khi lưu thông tin vào session
-                // ở đây mình tiến hành chuyển hướng trang web tới một trang gọi là index.php
                 
             }
         }

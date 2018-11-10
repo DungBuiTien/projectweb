@@ -1,13 +1,11 @@
 <?php
 session_start();
-if($_SESSION['username']!= "admin" && $_SESSION['username']!= "anonymous" && ($_SESSION['username']!=NULL &&  $_SESSION['username'])){
+if($_SESSION['username']!= "admin" && $_SESSION['username']!= "anonymous" || ($_SESSION['username']==NULL &&  !$_SESSION['username'])){
      header("Location: ../home");
     }
 
 ?>
 
-
-<!------ Include the above in your HEAD tag ---------->
 <html>
 
 <head>
@@ -102,23 +100,22 @@ if($_SESSION['username']!= "admin" && $_SESSION['username']!= "anonymous" && ($_
                         echo '<div>
                         <ul class="pagination pagination-sm">';                                                                         
                        // hiển thị nút prev
-                        echo '<li><a href=index.php?page='.($current_page-1).'>Prev</a></li>';
+                        echo '<li><a href=?page='.($current_page-1).'>Prev</a></li>';
                         // Lặp khoảng giữa
                         
                         for ($i = 1; $i <= $total_page; $i++){
                            if($i==$current_page){
-                               echo'<li class="pagination2 active"><a href=index.php?page='.$i.'>'.$i.'</a></li>';
+                               echo'<li class="pagination2 active"><a href=?page='.$i.'>'.$i.'</a></li>';
                            } else
-                            echo '<li class="pagination2"><a href=index.php?page='.$i.'>'.$i.'</a></li>'; 
+                            echo '<li class="pagination2"><a href=?page='.$i.'>'.$i.'</a></li>'; 
                         }
                         // hiển thị nút next
-                        echo '<li><a href=index.php?page='.($current_page+1).'>Next</a></li></ul></div>';
+                        echo '<li><a href=?page='.($current_page+1).'>Next</a></li></ul></div>';
                     }
                 ?>
                 <br/>
         <div class="list" >
-            
-             <table class="table table-bordered table-condensed table-responsive" style="font-size: 0.9em;">
+             <table id="all" class="table table-bordered table-condensed table-responsive" style="font-size: 0.9em;">
         	 	<thead>
         	 		<tr style="background: #7193FF !important; color: #fff">
 	        	 		<th class="text-center">STT</th>
@@ -133,22 +130,25 @@ if($_SESSION['username']!= "admin" && $_SESSION['username']!= "anonymous" && ($_
 	        	 		<th>Nơi sinh</th>
 	        	 		<th>Mức lương</th>
 	        	 		<th>Công việc</th>
-	        	 		<th  class="text-center">Sửa</th>
-	        	 		<th  class="text-center">Xoá</th>
+	        	 		<th class="text-center">Sửa</th>
+	        	 		<th class="text-center">Xoá</th>
 	        	 	</tr>
         	 		<tr style='background-color: #E5F1F4;'>
 	      				<th></th>
-	      				<th><input type="text" name=""></th>
-	        	 		<th><input type="text" name=""></th>
-	        	 		<th><input type="text" name=""></th>
-	        	 		<th><input type="text" name=""></th>
-	        	 		<th><input type="text" name=""></th>
-	        	 		<th><input type="text" name=""></th>
-	        	 		<th><input type="text" name=""></th>
-	        	 		<th><input type="text" name=""></th>
-	        	 		<th><input type="text" name=""></th>
-	        	 		<th><input type="text" name=""></th>
-	        	 		<th><input type="text" name=""></th>
+                        <form action="index.php" method="POST">
+	      				<th><input type="text" name="mssv"></th>
+	        	 		<th><input type="text" name="fullname"></th>
+	        	 		<th><input type="text" name="birthday"></th>
+	        	 		<th><input type="text" name="gender"></th>
+	        	 		<th><input type="text" name="khoahoc"></th>
+	        	 		<th><input type="text" name="lopkhoahoc"></th>
+	        	 		<th><input type="text" name="phone_number"></th>
+	        	 		<th><input type="text" name="email"></th>
+	        	 		<th><input type="text" name="address"></th>
+	        	 		<th><input type="text" name="salary"></th>
+	        	 		<th><input type="text" name="work"></th>
+                        <input hidden="hidden" type="submit"  name="submit">
+                        </form>
 	        	 		<th></th>
 	        	 		<th></th>
 	        	 	</tr>
@@ -163,7 +163,6 @@ if($_SESSION['username']!= "admin" && $_SESSION['username']!= "anonymous" && ($_
                         $result= mysqli_query($conn,$sql);
                         $i=$start+1;
         	 			while ($row=mysqli_fetch_array($result)) {
-
                             echo "<tr >";
         	 				echo "<td>".$i++."</td>\n";
         	 				echo "<td>".$row['mssv']."</td>\n";
@@ -174,7 +173,7 @@ if($_SESSION['username']!= "admin" && $_SESSION['username']!= "anonymous" && ($_
         	 				echo "<td>".$row['lopkhoahoc']."</td>\n";
         	 				echo "<td>".$row['phone_number']."</td>\n";
         	 				echo "<td>".$row['email']."</td>\n";
-        	 				echo "<td>".$row['districtname']."-".$row['provincename']."</td>\n";
+        	 				echo "<td>".$row['provincename']."</td>\n";
         	 				echo "<td>".$row['salary']."</td>\n";
         	 				echo "<td>".$row['work']."</td>\n";
         	 				echo "<td><a href><i class='fa fa-edit'></a></td>\n";
@@ -182,6 +181,91 @@ if($_SESSION['username']!= "admin" && $_SESSION['username']!= "anonymous" && ($_
         	 				echo "</tr>";
         	 			}
         	 		 ?>
+                     <?php
+                            if(isset($_POST['submit'])){
+                                echo "
+                                <script>
+                                    document.getElementById('all').setAttribute('hidden','hidden');
+                                </script>
+                                 ";
+                                require_once '../lib/connect.php';
+                                $mssv           =$_POST['mssv'];
+                                $fullname       =$_POST['fullname'];
+                                $birthday       =$_POST['birthday'];
+                                $gender         =$_POST['gender'];
+                                $khoahoc        =$_POST['khoahoc'];
+                                $lopkhoahoc     =$_POST['lopkhoahoc'];
+                                $phone_number   =$_POST['phone_number'];
+                                $email          =$_POST['email'];
+                                $address        =$_POST['address'];
+                                $salary         =$_POST['salary'];
+                                $work           =$_POST['work'];
+
+                                $sql="SELECT mssv,fullname,birthday,gender,lopkhoahoc,khoahoc,phone_number,email,salary,work,b.name as provincename,c.name as districtname 
+                                    from cuusv as a
+                                    INNER join province as b on a.provinceid=b.provinceid
+                                    inner join district as c on a.districtid=c.districtid
+                                    WHERE   mssv like '%$mssv%' and fullname like '%$fullname%' and birthday like '%$birthday%' and gender like'%$gender%' and khoahoc like'%$khoahoc%' and lopkhoahoc like'%$lopkhoahoc%' and b.name like '%$address%' and phone_number like '%$phone_number%' and email like'%$email%' and salary like'%$salary%' and work like'%$work%'";
+                                $array=['mssv','fullname','birthday','gender','khoahoc','lopkhoahoc','phone_number','email','provincename','salary','work'];
+                                $result=mysqli_query($conn,$sql);
+                                $birthday       =date("Y-m-d",strtotime($_POST['birthday']));
+                                    ?>
+                                    <div class="container-fluid">
+                                    <table class="table table-bordered table-condensed table-responsive" style="font-size: 0.9em;">
+                                        <thead>
+                                            <tr style="background: #7193FF !important; color: #fff">
+                                                <th class="text-center">STT</th>
+                                                <th>MSSV</th>
+                                                <th>Họ tên</th>
+                                                <th>Ngày sinh</th>
+                                                <th>Giới tính</th>
+                                                <th>Khoá</th>
+                                                <th>Lớp</th>
+                                                <th>Số điện thoại</th>
+                                                <th>Email</th>
+                                                <th>Nơi sinh</th>
+                                                <th>Mức lương</th>
+                                                <th>Công việc</th>
+                                                <th class="text-center">Sửa</th>
+                                                <th class="text-center">Xoá</th>
+                                            </tr>
+                                            <tr style='background-color: #E5F1F4;'>
+                                                <th></th>
+                                                <form action="index.php" method="POST">
+                                                <th><input type="text" name="mssv"></th>
+                                                <th><input type="text" name="fullname"></th>
+                                                <th><input type="text" name="birthday"></th>
+                                                <th><input type="text" name="gender"></th>
+                                                <th><input type="text" name="khoahoc"></th>
+                                                <th><input type="text" name="lopkhoahoc"></th>
+                                                <th><input type="text" name="phone_number"></th>
+                                                <th><input type="text" name="email"></th>
+                                                <th><input type="text" name="address"></th>
+                                                <th><input type="text" name="salary"></th>
+                                                <th><input type="text" name="work"></th>
+                                                <input hidden="hidden" type="submit"  name="submit">
+                                                </form>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                    <?php
+                                    $j=1;
+                                    while($row=mysqli_fetch_array($result)){
+                                        echo "<tr >";
+                                        echo "<td>".$j++."</td>\n";
+                                        for($i=0;$i<count($array);$i++){
+                                            echo "<td>".$row[$array[$i]]."</td>";
+                                        }
+                                        echo "<td><a href><i class='fa fa-edit'></a></td>\n";
+                                        echo "<td><a href><i class='fa fa-times'></a></td>\n";
+                                        echo "</tr>";
+                                }
+                                    
+                            }
+                                        
+                        ?>  
         	 	</tbody>
         	 </table>
              
@@ -193,5 +277,6 @@ if($_SESSION['username']!= "admin" && $_SESSION['username']!= "anonymous" && ($_
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <!-- Bootstrap Js CDN -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </body>
 </html>

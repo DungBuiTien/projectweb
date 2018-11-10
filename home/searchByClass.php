@@ -13,7 +13,7 @@ elseif(!isset($_SESSION['class']) || !$_SESSION['khoahoc'] || !$_SESSION['class'
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Danh sách lớp<?=$_SESSION['class'] ?></title>
+    <title>Tìm kiếm theo lớp khoá học</title>
     <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <!-- Bootstrap CSS CDN -->
