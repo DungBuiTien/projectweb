@@ -18,22 +18,17 @@ function LineChart(){
                 label: "Tỉ lệ cựu sinh viên tốt nghiệp có việc liên quan đến ngành học (%)",
                 data: [65, 59, 71, 74, 68, 72, 80, 86],
                 backgroundColor: [
-                    'rgba(105, 0, 132, .0)',
+                    'rgba(155, 99, 132, .2)',
                 ],
                 borderColor: [
-                    'rgb(250, 3, 14)',
+                    'rgb(155, 3, 14, .7)',
                 ],
                 borderWidth: 2
             }
             ]
         },
         options: {
-            responsive: true,
-            scales: {
-                yAxes: [{
-                    stacked: true
-                }]
-            }
+            responsive: true
         }
     });
 }
@@ -133,11 +128,6 @@ function PieChart2(a,b,c,d){
             }],
             options: {
                 responsive: true,
-                scales: {
-                    yAxes: [{
-                        stacked: true
-                    }]
-                },
                 
                 animation: {
                     onProgress: function(animation) {
