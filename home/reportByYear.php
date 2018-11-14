@@ -28,7 +28,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
         <!-- Bootstrap JS -->
         <!-- jQuery Custom Scroller CDN -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
         <script src="./js/index.js"></script>
 
     </head>
@@ -41,13 +41,13 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                     <h3><a href="./">Trang quản lý cựu sinh viên</a></h3>
                 </div>
                 <ul class="list-unstyled components">
-                    <li class="active">
+                    <li>
                         <a href="./"><i class="fa fa-home fa-lg"></i> Tin tức cựu sinh viên</a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="#"><i class="fa fa-search fa-lg"></i> Tìm kiếm</a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"><i class="fa fa-file fa-lg"></i> Báo cáo về cựu sinh viên</a>
                         <ul class="collapse list-unstyled" id="pageSubmenu">
                             <li><a href="reportByYear.php">Báo cáo theo niên khoá</a></li>
@@ -59,7 +59,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                         <a href="#"><i class="fa fa-chart-bar fa-lg"></i> Thống kê</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-question-circle fa-lg"></i> Trung tâm trợ giúp</a>
+                        <a href="helpCenter.php"><i class="fa fa-question-circle fa-lg"></i> Trung tâm trợ giúp</a>
                     </li>
                     <li>
                         <a href="changeInfo.php"><i class="fa fa-cog fa-lg"></i> Cài đặt tài khoản</a>
@@ -76,12 +76,6 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                             </button>
                         </div>
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav navbar-left">
-                                <form class="form-group form-inline" method="POST" action="error404.php">
-                                    <input class="form-control" type="text" placeholder="Search.." name="search">
-                                    <button type="submit" class="btn btn-default">Search</button>
-                                </form>
-                            </ul>
                             <ul class="nav navbar-nav navbar-right">
                                 <li>
                                     <button class="btn btn-default" data-toggle="dropdown">
@@ -111,6 +105,10 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
             require_once("../lib/connect.php");
             $sql="SELECT count(work) as work FROM `cuusv`";
             $sql2="SELECT count(work) as work FROM `cuusv` WHERE work <>''";
+            $result= mysqli_query($conn,$sql);
+            if(!$result){
+                echo mysqli_error($conn);
+            } else
             $allwork=mysqli_fetch_assoc(mysqli_query($conn,$sql))['work'];
             $havework=mysqli_fetch_assoc(mysqli_query($conn,$sql2))['work'];
             // in ra số lượng sinh viên có kinh nghiệm năm vào học <= hiện tại -9
@@ -123,7 +121,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
             }
 
         ?>
-                    <div class="col col-md-12">
+                    
                         <div class="row justify-content-center">
                             <div class="col col-md-3 col-sm-10">
                                 <div class="panel panel-default">
@@ -146,7 +144,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                             <div class="col col-md-3 col-sm-10">
                                 <div class="panel panel-default">
                                     <div class="panel-body">
-                                        <h5 style="font-size: x-small">Số cựu sinh viên trắng dái</h5>
+                                        <h5 style="font-size: x-small">Số cựu sinh viên thất nghiệp</h5>
                                         <span style="font-size: x-large; font-weight: bold"><?= $allwork- $havework ?></span>
 
                                     </div>
@@ -154,38 +152,44 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                             </div>
                         </div>
 
-                    </div>
+                    
                     <!-- bieu do duong thong ke qua cac nam -->
-                    <div class="col col-md-10 col-md-offset-1 col-sm-10">
+                    <div class="row justify-content-center">
+                    <div class="col col-md-10 col-sm-10">
                         <div class="panel panel-default">
                             <div class="panel-body">
                                 <canvas id="lineChart"></canvas>
                             </div>
                         </div>
                     </div>
+                    </div>
+                    <div class="row justify-content-center">
                     <!-- bieu do trung binh luong qua cac nam -->
-                    <div class="col col-md-10 col-md-offset-1 col-sm-10">
+                    <div class="col col-md-10 col-sm-10">
                         <div class="panel panel-default">
                             <div class="panel-body">
                                 <canvas id="barChart"></canvas>
                             </div>
                         </div>
                     </div>
-                    <div class="col col-md-5 col-md-offset-1 col-sm-5">
+                    </div>
+                    <div class="row justify-content-center">
+                    <div class="col col-md-5 col-sm-8">
                         <div class="panel panel-default">
-                            <label class="text-center label label-info">Số lượng mức lương của người có mới ra trường(Đơn vị: triệu đồng)</label>
+                            <label class="text-center label label-info">Tỉ lệ mức lương của người có mới ra trường(Đơn vị: triệu đồng)</label>
                             <div class="panel-body">
                                 <canvas id="pieChart"></canvas>
                             </div>
                         </div>
                     </div>
-                    <div class="col col-md-5 col-sm-5">
+                    <div class="col col-md-5 col-sm-8">
                         <div class="panel panel-default">
-                            <label class="text-center label label-info">Số lượng mức lương của người có kinh nghiệm(Đơn vị: triệu đồng)</label>
+                            <label class="text-center label label-info">Tỉ lệ mức lương của người có kinh nghiệm(Đơn vị: triệu đồng)</label>
                             <div class="panel-body">
                                 <canvas id="pieChart2"></canvas>
                             </div>
                         </div>
+                    </div>
                     </div>
             </div>
         </div>

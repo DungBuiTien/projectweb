@@ -40,7 +40,7 @@ elseif(!isset($_SESSION['class']) || !$_SESSION['khoahoc'] || !$_SESSION['class'
                     <h3><a href="./">Trang quản lý cựu sinh viên</a></h3>
                 </div>
                 <ul class="list-unstyled components">
-                    <li class="active">
+                    <li>
                         <a href="#"><i class="fa fa-home fa-lg"></i> Tin tức cựu sinh viên</a>
                     </li>
                     <li class="active">
@@ -58,7 +58,7 @@ elseif(!isset($_SESSION['class']) || !$_SESSION['khoahoc'] || !$_SESSION['class'
                         <a href="#"><i class="fa fa-chart-bar fa-lg"></i> Thống kê</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-question-circle fa-lg"></i> Trung tâm trợ giúp</a>
+                        <a href="helpCenter.php"><i class="fa fa-question-circle fa-lg"></i> Trung tâm trợ giúp</a>
                     </li>
                     <li>
                         <a href="changeInfo.php"><i class="fa fa-cog fa-lg"></i> Cài đặt tài khoản</a>
@@ -75,12 +75,6 @@ elseif(!isset($_SESSION['class']) || !$_SESSION['khoahoc'] || !$_SESSION['class'
                             </button>
                         </div>
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav navbar-left">
-                                <form class="form-group form-inline" method="POST" action="error404.php">
-                                    <input class="form-control" type="text" placeholder="Search.." name="search">
-                                    <button type="submit" class="btn btn-default">Search</button>
-                                </form>
-                            </ul>
                             <ul class="nav navbar-nav navbar-right">
                                 <li>
                                     <button class="btn btn-default" data-toggle="dropdown">

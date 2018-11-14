@@ -39,8 +39,8 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                     <li class="active">
                         <a href="#"><i class="fa fa-home fa-lg"></i> Tin tức cựu sinh viên</a>
                     </li>
-                    <li class="active">
-                        <a href="#"><i class="fa fa-search fa-lg"></i> Tìm kiếm</a>
+                    <li>
+                        <a href="search.php"><i class="fa fa-search fa-lg"></i> Tìm kiếm</a>
                     </li>
                     <li>
                         <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"><i class="fa fa-file fa-lg"></i> Báo cáo về cựu sinh viên</a>
@@ -54,7 +54,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                         <a href="#"><i class="fa fa-chart-bar fa-lg"></i> Thống kê</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-question-circle fa-lg"></i> Trung tâm trợ giúp</a>
+                        <a href="helpCenter.php"><i class="fa fa-question-circle fa-lg"></i> Trung tâm trợ giúp</a>
                     </li>
                     <li>
                         <a href="changeInfo.php"><i class="fa fa-cog fa-lg"></i> Cài đặt tài khoản</a>
