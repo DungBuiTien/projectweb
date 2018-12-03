@@ -4,33 +4,50 @@
 <!doctype html>
 <html>
 <head>
-    <title>Login</title>
+    <title>Đăng nhập</title>
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+	<link rel="shortcut icon" href="../home/images/logo.png" type="image/x-icon">
     <style>
-        body         { padding-top:80px; }
+        body {
+            background-image: url(../home/images/background.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .container .navibox {
+            position: absolute;
+            top: 5%;
+            right: 5%;
+        }
+
+        h3 {
+            font-size: xx-large;
+            font-weight: bold;
+        }
     </style>
 </head> 
 <body>
     <div class="container">
-        <div class="col-sm-6 col-sm-offset-3">
-            <h1><span class="fa fa-sign-in"></span> Login</h1>
+        <div class="col-md-4 navibox jumbotron">
+            <h1><span class="fa fa-sign-in"></span> Đăng nhập</h1>
             <div class="alert alert-danger" id="errors"></div>
             <!-- LOGIN FORM -->
             <form action="login.php" method="POST">
                 <div class="form-group">
-                    <label>Username</label>
+                    <label>Tài khoản</label>
                     <input type="text" class="form-control" name="username">
                 </div>
                 <div class="form-group">
-                    <label>Password</label>
+                    <label>Mật khẩu</label>
                     <input type="password" class="form-control" name="password">
                 </div>
-                <button type="submit"  name="login" class="btn btn-warning btn-lg">Login</button>
+                <button type="submit"  name="login" class="btn btn-warning btn-lg">Đăng nhập</button>
             </form>
             <hr>
-            <p>Need an account? <a href="signup.php">Signup</a></p>
-            <p>Or go <a href="../">home</a>.</p>
+            <p>Chưa có tài khoản? <a href="signup.php">Đăng ký ngay</a></p>
+            <p>Hoặc quay trở về <a href="../">trang chủ</a>.</p>
         </div>
     </div>
 </body>

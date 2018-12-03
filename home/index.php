@@ -115,14 +115,14 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                                         <img class="d-block w-100" src="./images/slide.png" alt="Second slide">
                                         <div class="carousel-caption d-none">
                                             <h5>Đỗ Thành Huy</h5>
-                                            <p>Bet thủ đầu tiên thống lĩnh được khu vực gầm cầu Đuống.</p>
+                                            <p>Sinh viên đạt giải thưởng Fermat.</p>
                                         </div>
                                     </div>
                                     <div class="item">
                                         <img class="d-block w-100" src="./images/slide.png" alt="Third slide">
                                         <div class="carousel-caption d-none">
                                             <h5>Bùi Tiến Dũng</h5>
-                                            <p>Fanboy Navi đầu tiên được đưa ra khỏi hang.</p>
+                                            <p>Sinh viên 5 tốt.</p>
                                         </div>
                                     </div>
                                 </div>

@@ -1,26 +1,45 @@
-<!doctype html>
+﻿<!doctype html>
 <html>
 <head>
-    <title>Hello World</title>
+    <title>Quản lý thông tin cựu sinh viên</title>
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <style>
-        body         { padding-top:80px; }
-    </style>
+    <link rel="shortcut icon" href="home/images/logo.png" type="image/x-icon">
     <meta charset="UTF8">
+    <style>
+        body {
+            background-image: url(./home/images/background.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .container .navibox {
+            position: absolute;
+            top: 30%;
+            right: 5%;
+        }
+
+            .container .navibox .jumbotron {
+                padding-top: 20px;
+            }
+
+        h3 {
+            font-size: xx-large;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
-
-    <div class="jumbotron text-center">
-        <h1><span class="fa fa-lock"></span> cái này cẩn sửa</h1>
-
-        <p>Login or Register with:</p>
-
-        <a href="./admin/login.php" class="btn btn-default"><span class="fa fa-user"></span> Local Login</a>
-        <a href="./admin/signup.php" class="btn btn-default"><span class="fa fa-user"></span> Local Signup</a>
+    <div class="col-md-5 navibox">      
+        <div class="jumbotron text-center">
+            <h3>TRANG QUẢN LÝ THÔNG TIN CỰU SINH VIÊN</h3>
+            <p>Để tiếp tục, vui lòng lựa chọn</p>
+            <a href="./admin/login.php" class="btn btn-default"><span class="fa fa-user"></span> Đăng nhập</a>
+            <a href="./admin/signup.php" class="btn btn-default"><span class="fa fa-user"></span> Đăng ký</a>
+        </div>
     </div>
-
 </div>
 </body>
 </html>
