@@ -94,7 +94,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                 </nav>
                 <!-- Content here -->
                 <div id="slidetieubieu">
-                    <h2 style="text-align: center"><b>GƯƠNG MẶT TIÊU BIỂU</b></h2>
+                    <h2 style="text-align: center><b>GƯƠNG MẶT TIÊU BIỂU</b></h2>
                     <div class="row justify-content-center">
                         <div class="col-md-8 col-sm-10">
                             <div id="slide1" class="carousel slide" data-ride="carousel">
@@ -115,14 +115,14 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                                         <img class="d-block w-100" src="./images/slide.png" alt="Second slide">
                                         <div class="carousel-caption d-none">
                                             <h5>Đỗ Thành Huy</h5>
-                                            <p>Bet thủ đầu tiên thống lĩnh được khu vực gầm cầu Đuống.</p>
+                                            <p>Sinh viên đạt giải thưởng Fermat.</p>
                                         </div>
                                     </div>
                                     <div class="item">
                                         <img class="d-block w-100" src="./images/slide.png" alt="Third slide">
                                         <div class="carousel-caption d-none">
                                             <h5>Bùi Tiến Dũng</h5>
-                                            <p>Fanboy Navi đầu tiên được đưa ra khỏi hang.</p>
+                                            <p>Sinh viên 5 tốt.</p>
                                         </div>
                                     </div>
                                 </div>

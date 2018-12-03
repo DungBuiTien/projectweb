@@ -127,6 +127,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                     </ul>
                     <div class="tab-content">
                         <div id="home" class="tab-pane fade in">
+							<div class="row">
                             <div id="searchResult" class="panel col-md-9">
                                 <div class="panel-body">
                                     <table class="table table-striped">
@@ -284,7 +285,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                                     </ul>
                                 </div>
                             </div>
-                        </div>
+                        </div></div>
                         <div id="menu1" class="tab-pane fade">
                             <div class="panel panel-default" style="margin: auto">
                                 <div class="panel-body panel">
