@@ -94,7 +94,7 @@ if(!$_SESSION['username'] || $_SESSION['username']==NULL){
                 </nav>
                 <!-- Content here -->
                 <div id="slidetieubieu">
-                    <h2 style="text-align: center><b>GƯƠNG MẶT TIÊU BIỂU</b></h2>
+                    <h2 style="text-align: center"><b>GƯƠNG MẶT TIÊU BIỂU</b></h2>
                     <div class="row justify-content-center">
                         <div class="col-md-8 col-sm-10">
                             <div id="slide1" class="carousel slide" data-ride="carousel">
